@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe 'spots requests' do
-  describe 'GET /v1/games/1/current_spot' do
+  describe 'GET /api/v1/games/1/current_spot' do
     it 'returns the current spot' do
-      get '/v1/games/1/current_spot'
+      get '/api/v1/games/1/current_spot.json'
       expect(response).to be_success
 
       actual_response = JSON.parse(response.body)
