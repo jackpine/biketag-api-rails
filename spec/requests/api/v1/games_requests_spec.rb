@@ -3,23 +3,26 @@ require 'rails_helper'
 describe 'spots requests' do
   describe 'GET /api/v1/games/1/current_spot' do
     context 'with a spot' do
-    end
-    it 'returns the current spot' do
-      get '/api/v1/games/1/current_spot.json'
-      expect(response).to be_success
+      let!(:spot) { Spot.create! }
+      it 'returns the current spot' do
 
-      actual_response = JSON.parse(response.body)
+        get '/api/v1/games/1/current_spot.json'
+        expect(response).to be_success
 
-      expected_response = {
-        spot:  {
-          id: 123,
-          #user_id: 456,
-          image_url: "https://biketag.s3.aws.com/foo/bar/1235.jpg",
-          created_at: "2015-03-12 16:12:01 PDT"
-        }
-      }
+        actual_response = JSON.parse(response.body)
 
-      expect(actual_response).to eq(expected_response)
+        expected_response = JSON.parse({
+          spot:  {
+            id: 1,
+            url: 'http://www.example.com/api/v1/games/1/spot/1.json',
+            #user_id: 456, #TODO not implented yet.
+            image_url: '/images/medium/missing.png', #TODO implement photo upload
+            created_at: spot.created_at
+          }
+        }.to_json)
+
+        expect(actual_response["spot"]).to eq(expected_response["spot"])
+      end
     end
   end
 end
