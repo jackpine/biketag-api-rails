@@ -3,7 +3,6 @@ require 'rails_helper'
 describe 'spots requests' do
   describe 'GET /api/v1/games/1/current_spot' do
     context 'with a spot' do
-      Spot.create!
     end
     it 'returns the current spot' do
       get '/api/v1/games/1/current_spot.json'
