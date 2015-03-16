@@ -36,7 +36,6 @@ You'll have to start the rails server manually. Use the included server
 script to make sure the server is accessible from outside the container.
 
     localhost$ config/containers/app/shell.sh
-    root@biketag-app$ su - app
     app@biketag-app(~)$ cd ~/biketag-api
     app@biketag-app(~/biketag-api)$ bundle
     app@biketag-app(~/biketag-api)$ bundle exec rake db:setup
