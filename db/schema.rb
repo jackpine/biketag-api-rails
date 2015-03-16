@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150316205040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
+
+  create_table "spots", force: :cascade do |t|
+    t.geometry "location",           limit: {:srid=>4326, :type=>"point"}, null: false
+    t.string   "image_file_name",                                          null: false
+    t.string   "image_content_type",                                       null: false
+    t.integer  "image_file_size",                                          null: false
+    t.datetime "image_updated_at",                                         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spots", ["location"], name: "index_spots_on_location", using: :btree
 
 end
