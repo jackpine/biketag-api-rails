@@ -5,6 +5,9 @@ class Spot < ActiveRecord::Base
                                       small: '400x400>',
                                       thumb: '100x100>' }
 
+  validates_attachment :image, presence: true,
+                               content_type: { content_type: ['image/jpg', 'image/jpeg'] }
+
   def self.current_spot
     Spot.last
   end
