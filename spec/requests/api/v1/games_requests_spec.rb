@@ -19,7 +19,8 @@ describe 'spots requests' do
           spot:  {
             id: 1,
             url: 'http://www.example.com/api/v1/games/1/spot/1.json',
-            #user_id: 456, #TODO not implented yet.
+            user_id: 1, #TODO user system not implented yet.
+            user_name: "michael", #TODO user system not implented yet.
             image_url: 'http://localhost:3000//spots/images/000/000/001/medium/952_lucile.jpg?1426555184',
             created_at: Seeds.lucile_spot.created_at
           }
