@@ -9,6 +9,7 @@ gem 'dotenv-rails', :groups => [:development, :test]
 
 gem 'pg'
 gem 'activerecord-postgis-adapter', '3.0.0.beta2'
+gem 'rgeo-geojson'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -29,6 +30,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'paperclip'
+gem 'fog'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

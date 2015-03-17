@@ -13,4 +13,13 @@ class Spot < ActiveRecord::Base
     image.url(:medium)
   end
 
+  def location=(val)
+    val = val.deep_stringify_keys if val.class == Hash
+    self[:location] = RGeo::GeoJSON.decode(val).to_s
+  end
+
+  def location
+    RGeo::GeoJSON.encode(self[:location])
+  end
+
 end
