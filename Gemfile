@@ -32,6 +32,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'paperclip'
 gem 'fog'
 
+# Implicit dependency in our version of paperclip. Results in:
+# NameError: uninitialized constant Paperclip::Storage::S3::AWS
+# http://stackoverflow.com/questions/28374401/nameerror-uninitialized-constant-paperclipstorages3aws
+gem 'aws-sdk', '< 2.0'
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
