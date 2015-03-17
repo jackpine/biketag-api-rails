@@ -9,6 +9,7 @@ gem 'dotenv-rails', :groups => [:development, :test]
 
 gem 'pg'
 gem 'activerecord-postgis-adapter', '3.0.0.beta2'
+gem 'rgeo-geojson'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -29,6 +30,13 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'paperclip'
+gem 'fog'
+
+# Implicit dependency in our version of paperclip. Results in:
+# NameError: uninitialized constant Paperclip::Storage::S3::AWS
+# http://stackoverflow.com/questions/28374401/nameerror-uninitialized-constant-paperclipstorages3aws
+gem 'aws-sdk', '< 2.0'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
