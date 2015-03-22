@@ -14,18 +14,18 @@ describe 'guess requests' do
           {
             guess: {
               location: {
-                latitude: 34.0937,
-                longitude: -118.3240
+                type: 'Point',
+                coordinates: [-118.3240, 34.0937]
               }
             }
           }
         end
-        it 'returns the current spot' do
+        it 'returns a positive result' do
           post "/api/v1/games/1/spots/#{spot_id}/guesses.json", guess_params
           expect(response).to be_success
 
           actual_response = JSON.parse(response.body)
-          expect(actual_response['guess']['result']).to be_true
+          expect(actual_response['guess']['correct']).to eq(true)
         end
       end
 
@@ -34,18 +34,18 @@ describe 'guess requests' do
           {
             guess: {
               location: {
-                latitude: '123.45',
-                longitude: '-189.12'
+                type: 'Point',
+                coordinates: [-117.3240, 33.0937]
               }
             }
           }
         end
-        it 'returns the current spot' do
+        it 'returns a negative result' do
           post "/api/v1/games/1/spots/#{spot_id}/guesses.json", guess_params
           expect(response).to be_success
 
           actual_response = JSON.parse(response.body)
-          expect(actual_response['guess']['result']).to be_false
+          expect(actual_response['guess']['correct']).to eq(false)
         end
       end
     end

@@ -1,5 +1,7 @@
 class Spot < ActiveRecord::Base
 
+  has_many :guesses
+
   has_attached_file :image, styles: { large: '1600x1600>',
                                       medium: '800x800>',
                                       small: '400x400>',
