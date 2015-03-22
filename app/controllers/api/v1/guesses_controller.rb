@@ -1,4 +1,4 @@
-class Api::V1::GuessesController < ApplicationController
+class Api::V1::GuessesController < Api::BaseController
 
   def create
     spot = Spot.find(params[:spot_id])
