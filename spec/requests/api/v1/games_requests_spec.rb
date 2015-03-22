@@ -1,12 +1,13 @@
 require 'rails_helper'
 
-describe 'spots requests' do
+describe 'game requests' do
   describe 'GET /api/v1/games/1/current_spot' do
-    context 'with a spot' do
+    context 'with a set up game' do
       before do
         require Rails.root + 'db/seeds.rb'
         Seeds.seed!
       end
+      let(:spot_id) { Seeds.lucile_spot.id }
 
       it 'returns the current spot' do
 
@@ -17,8 +18,8 @@ describe 'spots requests' do
 
         expected_response = JSON.parse({
           spot:  {
-            id: 1,
-            url: 'http://www.example.com/api/v1/games/1/spot/1.json',
+            id: spot_id,
+            url: "http://www.example.com/api/v1/games/1/spots/#{spot_id}.json",
             user_id: 1, #TODO user system not implented yet.
             user_name: "michael", #TODO user system not implented yet.
             image_url: 'http://localhost:3000//spots/images/000/000/001/medium/952_lucile.jpg?1426555184',

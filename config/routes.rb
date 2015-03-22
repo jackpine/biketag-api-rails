@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   namespace 'api' do
     namespace 'v1' do
       resources :games, only: [] do
-        resources :spot, only: [:show]
+        resources :spots, only: [:show] do
+          resources :guesses, only: [:create]
+        end
         member do
           get :current_spot
         end
