@@ -1,4 +1,4 @@
-class Api::V1::GamesController < ApplicationController
+class Api::V1::GamesController < Api::BaseController
 
   def current_spot
     @spot = Spot.current_spot

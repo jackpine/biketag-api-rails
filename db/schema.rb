@@ -11,11 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150316205040) do
+ActiveRecord::Schema.define(version: 20150322030803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
+
+  create_table "guesses", force: :cascade do |t|
+    t.geometry "location",   limit: {:srid=>4326, :type=>"point"}, null: false
+    t.integer  "spot_id",                                          null: false
+    t.boolean  "correct",                                          null: false
+    t.string   "reason"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "guesses", ["location"], name: "index_guesses_on_location", using: :btree
+  add_index "guesses", ["spot_id"], name: "index_guesses_on_spot_id", using: :btree
 
   create_table "spots", force: :cascade do |t|
     t.geometry "location",           limit: {:srid=>4326, :type=>"point"}, null: false
@@ -29,4 +41,5 @@ ActiveRecord::Schema.define(version: 20150316205040) do
 
   add_index "spots", ["location"], name: "index_spots_on_location", using: :btree
 
+  add_foreign_key "guesses", "spots"
 end
