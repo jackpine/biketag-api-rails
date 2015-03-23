@@ -32,7 +32,13 @@ class Api::V1::SpotsController < Api::BaseController
       @spot.image = uploaded_file
     end
 
-    render :show
+    respond_to do |format|
+      if @spot.save
+        format.json { render action: 'show', status: :created, location: api_v1_game_spot_path(@spot) }
+      else
+        format.json { render json: { error: @spot.errors.full_messages }, status: :unprocessable_entity }
+      end
+    end
   end
 
   private
