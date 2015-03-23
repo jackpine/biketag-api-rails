@@ -27,4 +27,8 @@ class Spot < ActiveRecord::Base
     RGeo::GeoJSON.encode(self[:location])
   end
 
+  def self.generate_image_filename
+    SecureRandom.uuid + '.jpg'
+  end
+
 end
