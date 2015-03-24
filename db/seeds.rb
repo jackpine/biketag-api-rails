@@ -12,7 +12,7 @@ class Seeds
 
   def self.seed!
     self.lucile_spot = Spot.new location: { type: "Point",
-                                  coordinates: [-118.3240, 34.0937] }
+                                  coordinates: [-118.281617, 34.086588] }
     lucile_image_path = Rails.root + 'db/seeds/images/952_lucile.jpg'
     File.open(lucile_image_path) do |lucile_image|
       lucile_spot.image = lucile_image
