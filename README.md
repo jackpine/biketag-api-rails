@@ -22,6 +22,12 @@ You should now be able to see a biketag/api and a biketag/db image ready
 to be run.
 
     localhost$ docker images
+<<<<<<< Updated upstream
+=======
+    REPOSITORY                 TAG                 IMAGE ID            CREATED              VIRTUAL SIZE
+    biketag/api                latest              25c6cb8844bb        About a minute ago   665.9 MB
+    biketag/db                 latest              f8d87d188787        6 minutes ago        374.7 MB
+>>>>>>> Stashed changes
 
 
 Now, to run an instance of your containers
@@ -32,7 +38,6 @@ Now, to run an instance of your containers
 You should see both a 'biketag-db' and a 'biketag-api' container running.
 
     $ docker ps
-
     CONTAINER ID        IMAGE                COMMAND                CREATED STATUS              PORTS                                     NAMES
     0ec405f6cd37        biketag/api:latest   "/sbin/my_init -- ba   54 minutes ago      Up 54 minutes       443/tcp, 80/tcp, 0.0.0.0:3000->3000/tcp   biketag-api
     fdeb68e15f25        biketag/db:latest    "/docker-entrypoint.   58 minutes ago      Up 58 minutes       0.0.0.0:25432->5432/tcp biketag-db
