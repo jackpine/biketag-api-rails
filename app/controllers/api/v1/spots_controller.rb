@@ -34,7 +34,7 @@ class Api::V1::SpotsController < Api::BaseController
 
     respond_to do |format|
       if @spot.save
-        format.json { render action: 'show', status: :created, location: api_v1_game_spot_path(@spot) }
+        format.json { render action: 'show', status: :created, location: api_v1_game_spot_path(1, @spot, format: :json) }
       else
         format.json { render json: { error: @spot.errors.full_messages }, status: :unprocessable_entity }
       end
