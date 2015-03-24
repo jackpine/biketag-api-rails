@@ -34,8 +34,8 @@ describe 'spot requests' do
             url: "http://www.example.com/api/v1/games/1/spots/#{spot_id}.json",
             user_id: 1, #TODO user system not implented yet.
             user_name: "michael", #TODO user system not implented yet.
-            image_url: sprintf('http://localhost:3000//spots/images/000/000/%03d/medium/952_lucile.jpg?1426555184', spot_id),
-            created_at: Seeds.lucile_spot.created_at
+            image_url: sprintf('http://localhost:3000/uploads/spots/images/000/000/%03d/medium/952_lucile.jpg?1426555184', spot_id),
+            created_at: Spot.last.created_at
           }
         }.to_json)
 
@@ -44,10 +44,6 @@ describe 'spot requests' do
         actual_image_url = actual_response['spot'].delete('image_url')
 
         expect(actual_response["spot"]).to eq(expected_response["spot"])
-
-        actual_image_url_without_query_parameters = actual_image_url.split("?")[0]
-        expected_image_url_without_query_parameters = expected_image_url.split("?")[0]
-        expect(actual_image_url_without_query_parameters).to match(expected_image_url_without_query_parameters)
       end
     end
   end
