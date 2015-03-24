@@ -1,5 +1,5 @@
 # If you try to serve images from aws.com/bucket-name, AWS redirects to the bucket-prefixed domain name.
-Paperclip::Attachment.default_options[:path] = '/:class/:attachment/:id_partition/:style/:filename'
+Paperclip::Attachment.default_options[:path] = ':class/:attachment/:id_partition/:style/:filename'
 
 if Rails.application.config.host_uploads_locally
   options = {
@@ -8,7 +8,7 @@ if Rails.application.config.host_uploads_locally
       provider: 'Local',
       local_root: "#{Rails.root}/public"
     },
-    fog_directory: '/uploads',
+    fog_directory: 'uploads',
     fog_host: 'http://localhost:3000/uploads'
   }
 else
