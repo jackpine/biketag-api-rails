@@ -22,12 +22,9 @@ You should now be able to see a biketag/api and a biketag/db image ready
 to be run.
 
     localhost$ docker images
-<<<<<<< Updated upstream
-=======
     REPOSITORY                 TAG                 IMAGE ID            CREATED              VIRTUAL SIZE
     biketag/api                latest              25c6cb8844bb        About a minute ago   665.9 MB
     biketag/db                 latest              f8d87d188787        6 minutes ago        374.7 MB
->>>>>>> Stashed changes
 
 
 Now, to run an instance of your containers

@@ -7,11 +7,23 @@
 default: &default
   adapter: postgis
   pool: 5
-  host: 192.168.59.103
-  port: 25432
+  # FIXME set host/port from docker link variables. 
+  #
+  # The env variables are set, I can see them in the rails console, but not in
+  # the config.  
+  #
+  #     root$ bin/rails console
+  #     irb> ActiveRecord::Base.connection_info # => host: nil, port: nil, user: postgres
+  #     irb> ENV['BIKETAG_DB_PORT_5432_TCP_ADDR'] # => "172.17.0.2"
+  #
+  # host: <%= ENV['BIKETAG_DB_PORT_5432_TCP_ADDR'] %>
+  # port: <%= ENV['BIKETAG_DB_PORT_5432_TCP_PORT'] %>
+  #
+  # So, hardcoding for now...
+  host: "172.17.0.2"
+  port: "5432"
   user: postgres
-
-imeout: 5000
+  timeout: 5000
 
 development:
   <<: *default
