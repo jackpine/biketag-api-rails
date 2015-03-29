@@ -132,11 +132,9 @@ Provision the API Container
     # `.env` **must be present before we build the container**
     me@my-laptop$ scp ~/src/biketag/biketag-api/.env core@api.biketag-staging.jackpine.me:src/biketag/biketag-api
 
-    core@staging$ cd src/biketag/biketag-api/config/containers/api/
-    core@staging$ mkdir -p src/app
-    core@staging$ sudo ./mount-app-in-context.sh
-    core@staging$ build.sh
-    core@staging$ run.sh
+    core@staging$ cd src/biketag/biketag-api
+    core@staging$ config/containers/api/build.sh
+    core@staging$ config/containers/api/run.sh
 
 Stupid Workarounds
 
