@@ -13,13 +13,13 @@ Setup
 There are two containers - an app container and a db container. If you
 haven't already built the containers, you'll need to do so:
 
-    localhost$ cd config/containers/db/build.sh
-    localhost$ cd config/containers/api-dev/build.sh
+    me@my-laptop$ cd config/containers/db/build.sh
+    me@my-laptop$ cd config/containers/api-dev/build.sh
 
 You should now be able to see a biketag/api-dev and a biketag/db image ready
 to be run.
 
-    localhost$ docker images
+    me@my-laptop$ docker images
     REPOSITORY                 TAG                 IMAGE ID            CREATED              VIRTUAL SIZE
     biketag/api-dev            latest              25c6cb8844bb        About a minute ago   665.9 MB
     biketag/db                 latest              f8d87d188787        6 minutes ago        374.7 MB
@@ -27,8 +27,8 @@ to be run.
 
 Now, to run an instance of your containers
 
-    localhost$ config/containers/db/run.sh
-    localhost$ config/containers/api-dev/run.sh
+    me@my-laptop$ config/containers/db/run.sh
+    me@my-laptop$ config/containers/api-dev/run.sh
 
 You should see both a 'biketag-db' and a 'biketag-api-dev' container running.
 
@@ -52,23 +52,23 @@ containers, not to localhost.*
 You'll have to start the rails server manually. Use the included server
 script to make sure the server is accessible from outside the container.
 
-    localhost$ config/containers/app/shell.sh
-    app@biketag-app(~)$ cd ~/biketag-api
-    app@biketag-app(~/biketag-api)$ bundle
-    app@biketag-app(~/biketag-api)$ bundle exec rake db:setup
-    app@biketag-app(~/biketag-api)$ bin/server
+    me@my-laptop$ config/containers/api-dev/shell.sh
+    app@biketag-api-dev(~)$ cd ~/biketag-api-dev
+    app@biketag-api-dev(~/biketag-api-dev)$ bundle
+    app@biketag-api-dev(~/biketag-api-dev)$ bundle exec rake db:setup
+    app@biketag-api-dev(~/biketag-api-dev)$ bin/server
 
 *Note that you can't simply run `bin/rails server` while on boot2docker*
 
 At this point you should be good to go. Verify that you are able to hit
 the api server from your local machine.
 
-    localhost$ curl $(boot2docker ip):3000
+    me@my-laptop$ curl $(boot2docker ip):3000
 
 If you want to access the app on localhost, rather than remember
 boot2docker's ip, you can tunnel port 3000 over ssh.
 
-    localhost$ boot2docker ssh -L 3000:localhost:3000
+    me@my-laptop$ boot2docker ssh -L 3000:localhost:3000
 
 Deployment
 ==========
