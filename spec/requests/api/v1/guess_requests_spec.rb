@@ -15,7 +15,7 @@ describe 'guess requests' do
             guess: {
               location: {
                 type: 'Point',
-                coordinates: [-118.3240, 34.0937]
+                coordinates: [-118.2816, 34.0865]
               }
             }
           }
