@@ -22,7 +22,7 @@ describe 'game requests' do
             url: "http://www.example.com/api/v1/games/1/spots/#{spot_id}.json",
             user_id: 1, #TODO user system not implented yet.
             user_name: "michael", #TODO user system not implented yet.
-            image_url: sprintf('http://localhost:3000//spots/images/000/000/%03d/medium/952_lucile.jpg?1426555184', spot_id),
+            image_url: sprintf('http://localhost:3000/uploads/spots/images/000/000/%03d/medium/952_lucile.jpg?1426555184', spot_id),
             created_at: Seeds.lucile_spot.created_at
           }
         }.to_json)
