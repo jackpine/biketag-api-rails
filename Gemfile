@@ -5,7 +5,7 @@ gem 'rails', '4.2.0'
 
 # dotenv should be inluded before any other gems that use environment
 # variables, otherwise those gems will get initialized with the wrong values.
-gem 'dotenv-rails', :groups => [:development, :test]
+gem 'dotenv-rails'
 
 gem 'pg'
 gem 'activerecord-postgis-adapter', '3.0.0.beta2'
