@@ -41,6 +41,20 @@ class Api::V1::SpotsController < Api::BaseController
     end
   end
 
+  def index
+    @spots = Spot.all
+    respond_to do |format|
+      format.json { render :index }
+    end
+  end
+
+  def show
+    @spot = Spot.find(params[:id])
+    respond_to do |format|
+      format.json { render :show }
+    end
+  end
+
   private
 
   def spot_params

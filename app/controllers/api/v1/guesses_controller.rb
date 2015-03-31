@@ -9,6 +9,22 @@ class Api::V1::GuessesController < Api::BaseController
     end
   end
 
+  def index
+    spot = Spot.find(params[:spot_id])
+    @guesses = spot.guesses
+    respond_to do |format|
+      format.json { render :index }
+    end
+  end
+
+  def show
+    spot = Spot.find(params[:spot_id])
+    @guess = spot.guesses.find(params[:id])
+    respond_to do |format|
+      format.json { render :show }
+    end
+  end
+
   private
 
   def guess_params
