@@ -22,8 +22,10 @@ class Api::V1::GamesController < Api::BaseController
   end
 
   def make_game(id)
-    { id: id,
-      name: "Game #{id}"
+    {
+      id: id,
+      name: "Game #{id}",
+      spot_ids: (id == 1 ? (Spot.all.map &:id) : [])
     }
   end
 
