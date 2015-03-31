@@ -1,1 +1,3 @@
-json.partial! 'spot', spot: @spot
+json.spot do
+  json.partial! 'spot', spot: @spot
+end

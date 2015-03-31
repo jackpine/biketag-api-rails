@@ -1,1 +1,3 @@
-json.partial! 'guess', guess: @guess
+json.guess do
+  json.partial! 'guess', guess: @guess
+end
