@@ -4,11 +4,13 @@ class Api::V1::SpotsController < Api::BaseController
     @spot = Spot.new(spot_params)
 
     # check if image was sent
-    if params[:spot] && params[:spot][:image]
+    if params[:spot] && params[:spot][:image_data]
+      image_data = params[:spot].delete(:image_data)
+      decoded_image_data = Base64.decode64(image_data)
       decoded_image_file = Tempfile.new("fileupload")
       decoded_image_file.binmode
-      decoded_image_data = Base64.decode64(params[:spot][:image])
       decoded_image_file.write(decoded_image_data)
+
       # If we don't rewind, the file cursor will be at the end of the file, and there
       # will be nothing left to read (making the server think the file is empty)
       decoded_image_file.rewind
@@ -34,7 +36,7 @@ class Api::V1::SpotsController < Api::BaseController
 
     respond_to do |format|
       if @spot.save
-        format.json { render action: 'show', status: :created, location: api_v1_game_spot_path(1, @spot, format: :json) }
+        format.json { render action: 'show', status: :created, location: api_v1_spot_path(1, @spot, format: :json) }
       else
         format.json { render json: { error: @spot.errors.full_messages }, status: :unprocessable_entity }
       end

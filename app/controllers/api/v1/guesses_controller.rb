@@ -1,7 +1,8 @@
 class Api::V1::GuessesController < Api::BaseController
 
   def create
-    @guess = Guess.create!(guess_params)
+    spot = Spot.find(guess_params[:spot_id])
+    @guess = spot.guesses.create!(guess_params)
 
     respond_to do |format|
       format.json { render :show }
@@ -25,12 +26,7 @@ class Api::V1::GuessesController < Api::BaseController
   private
 
   def guess_params
-    p = params.require(:guess)
-    # Is this the right way to require spot_id without descending
-    # the scope which "permit" operates?
-    p.require(:spot_id)
-
-    p.permit(location: [ :type, coordinates: [] ])
+    params.require(:guess).permit(:spot_id, location: [ :type, coordinates: [] ])
   end
 
 end
