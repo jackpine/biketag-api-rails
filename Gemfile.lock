@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/jackpine/rack-permissive-cors.git
+  revision: 83cf32550c5c7f6583c07ef02e3a7ec9abcda767
+  specs:
+    rack-permissive-cors (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -336,6 +342,7 @@ DEPENDENCIES
   paperclip
   pg
   pry
+  rack-permissive-cors!
   rails (= 4.2.0)
   rgeo-geojson
   rspec-rails

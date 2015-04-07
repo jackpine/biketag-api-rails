@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'guess requests' do
-  describe 'POST /api/v1/games/1/spots/2/guesses' do
+  describe 'POST /api/v1/guesses' do
     context 'with a set up game' do
       before do
         require Rails.root + 'db/seeds.rb'
@@ -13,6 +13,7 @@ describe 'guess requests' do
         let(:guess_params) do
           {
             guess: {
+              spot_id: spot_id,
               location: {
                 type: 'Point',
                 coordinates: [-118.2816, 34.0865]
@@ -21,7 +22,7 @@ describe 'guess requests' do
           }
         end
         it 'returns a positive result' do
-          post "/api/v1/games/1/spots/#{spot_id}/guesses.json", guess_params
+          post '/api/v1/guesses', guess_params
           expect(response).to be_success
 
           actual_response = JSON.parse(response.body)
@@ -33,6 +34,7 @@ describe 'guess requests' do
         let(:guess_params) do
           {
             guess: {
+              spot_id: spot_id,
               location: {
                 type: 'Point',
                 coordinates: [-117.3240, 33.0937]
@@ -41,7 +43,7 @@ describe 'guess requests' do
           }
         end
         it 'returns a negative result' do
-          post "/api/v1/games/1/spots/#{spot_id}/guesses.json", guess_params
+          post '/api/v1/guesses', guess_params
           expect(response).to be_success
 
           actual_response = JSON.parse(response.body)

@@ -31,5 +31,10 @@ module BikeTag
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
     config.host_uploads_locally = true
+
+    require 'rack/permissive-cors'
+    config.middleware.insert_before(ActionDispatch::Static,
+                                    Rack::PermissiveCors)
+
   end
 end

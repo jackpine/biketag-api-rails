@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 
+gem 'rack-permissive-cors', git: "https://github.com/jackpine/rack-permissive-cors.git"
+
 # dotenv should be inluded before any other gems that use environment
 # variables, otherwise those gems will get initialized with the wrong values.
 gem 'dotenv-rails'

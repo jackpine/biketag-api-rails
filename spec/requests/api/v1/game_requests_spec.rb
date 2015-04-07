@@ -7,7 +7,7 @@ describe 'game requests' do
         require Rails.root + 'db/seeds.rb'
         Seeds.seed!
       end
-      let(:spot_id) { Seeds.lucile_spot.id }
+      let(:last_spot_id) { Spot.last.id }
 
       it 'returns the current spot' do
 
@@ -18,11 +18,14 @@ describe 'game requests' do
 
         expected_response = JSON.parse({
           spot:  {
-            id: spot_id,
-            url: "http://www.example.com/api/v1/games/1/spots/#{spot_id}.json",
+            game_id: 1,
+            guess_ids: [],
+            id: last_spot_id,
+            url: "http://www.example.com/api/v1/spots/#{last_spot_id}",
             user_id: 1, #TODO user system not implented yet.
             user_name: "michael", #TODO user system not implented yet.
-            image_url: sprintf('http://localhost:3000/uploads/spots/images/000/000/%03d/medium/952_lucile.jpg?1426555184', spot_id),
+            location: {"type"=>"Point", "coordinates"=>[-118.281617, 34.086588]},
+            image_url: sprintf('http://localhost:3000/uploads/spots/images/000/000/%03d/medium/952_lucile.jpg?1426555184', last_spot_id),
             created_at: Seeds.lucile_spot.created_at
           }
         }.to_json)
