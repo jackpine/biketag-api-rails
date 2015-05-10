@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  # :database_authenticatable, :registerable, :recoverable, :rememberable, 
-  devise :trackable, :validatable
+  # :registerable, :recoverable, :rememberable, 
+  devise :database_authenticatable, :trackable, :validatable
 
   validates :device_id, uniqueness: { scope: :email, message: "has already been registered" }
   validates :email, uniqueness: { allow_blank: true }

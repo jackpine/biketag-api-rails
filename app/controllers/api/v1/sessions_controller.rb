@@ -8,7 +8,9 @@ class Api::V1::SessionsController < Api::V1::BaseController
       raise StandardError.new("This device was already registered");
     else
       user = User.create!(device_id: session_params[:device_id])
-      user.session
+      respond_to do |format|
+        format.json { render json: user.session }
+      end
     end
   end
 
