@@ -30,6 +30,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
+      ## authentication_token for API
+      t.string :authentication_token, null: false
+      t.string :device_id
 
       t.timestamps
     end
@@ -38,5 +41,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
     add_index :users, :reset_password_token, unique: true
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
+    add_index :users, :device_id
+
+    # Can log into multiple accounts on the same device,
+    # but only one "anonymous" account
+    add_index :users, :device_id, :email, unique: true
   end
 end
