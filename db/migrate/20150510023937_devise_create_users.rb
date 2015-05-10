@@ -45,6 +45,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
     # Can log into multiple accounts on the same device,
     # but only one "anonymous" account
-    add_index :users, :device_id, :email, unique: true
+    add_index :users, [:device_id, :email], unique: true
   end
 end

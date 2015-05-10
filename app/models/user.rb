@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validate :device_id, uniqueness: { scope: :email, message: "has already been registered" }
+  validate :email, uniqueness: { allow_blank: true }
+
   before_save :ensure_authentication_token
 
   def ensure_authentication_token
