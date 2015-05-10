@@ -12,6 +12,7 @@ gem 'dotenv-rails'
 gem 'pg'
 gem 'activerecord-postgis-adapter', '3.0.0.beta2'
 gem 'rgeo-geojson'
+gem 'devise'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -38,6 +39,8 @@ gem 'fog'
 # NameError: uninitialized constant Paperclip::Storage::S3::AWS
 # http://stackoverflow.com/questions/28374401/nameerror-uninitialized-constant-paperclipstorages3aws
 gem 'aws-sdk', '< 2.0'
+
+gem 'haml-rails'
 
 
 # Use ActiveModel has_secure_password
