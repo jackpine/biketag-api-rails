@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  # :database_authenticatable, :registerable, :recoverable, :rememberable, 
+  devise :trackable, :validatable
 
-  validate :device_id, uniqueness: { scope: :email, message: "has already been registered" }
-  validate :email, uniqueness: { allow_blank: true }
+  validates :device_id, uniqueness: { scope: :email, message: "has already been registered" }
+  validates :email, uniqueness: { allow_blank: true }
 
   before_save :ensure_authentication_token
 
@@ -22,6 +22,17 @@ class User < ActiveRecord::Base
       user_id: id,
       authentication_token: authentication_token
     }
+  end
+
+  # We allow users to identify using their device id
+  def email_required?
+    false
+  end
+
+  # Password need only be set when user gives their email
+  # Otherwise they are using a (non-recoverable!) api key
+  def password_required?
+    email.present?
   end
 
   private

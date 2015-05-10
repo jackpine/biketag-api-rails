@@ -1,4 +1,4 @@
-class SessionsController < Api::V1::BaseController
+class Api::V1::SessionsController < Api::V1::BaseController
   skip_before_filter :authenticate_user_from_token!
 
   def create
@@ -7,7 +7,7 @@ class SessionsController < Api::V1::BaseController
     if user
       raise StandardError.new("This device was already registered");
     else
-      user = User.create(device_id: session_params[:device_id])
+      user = User.create!(device_id: session_params[:device_id])
       user.session
     end
   end
