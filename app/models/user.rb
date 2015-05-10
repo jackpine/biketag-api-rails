@@ -12,6 +12,15 @@ class User < ActiveRecord::Base
     end
   end
 
+  def session
+    raise StandardError.new("Can't return session for uninitialized user") unless (id && authentication_token)
+
+    {
+      user_id: id,
+      authentication_token: authentication_token
+    }
+  end
+
   private
 
   def generate_authentication_token
