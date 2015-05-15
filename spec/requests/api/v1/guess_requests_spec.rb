@@ -22,7 +22,7 @@ describe 'guess requests' do
           }
         end
         it 'returns a positive result' do
-          post '/api/v1/guesses', guess_params
+          post '/api/v1/guesses', guess_params.merge(Seeds.auth_params)
           expect(response).to be_success
 
           actual_response = JSON.parse(response.body)
@@ -43,7 +43,7 @@ describe 'guess requests' do
           }
         end
         it 'returns a negative result' do
-          post '/api/v1/guesses', guess_params
+          post '/api/v1/guesses', guess_params.merge(Seeds.auth_params)
           expect(response).to be_success
 
           actual_response = JSON.parse(response.body)

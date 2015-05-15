@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+
   # We don't have any views to auth users yet
   # - only the sessions/api key exchange
   # devise_for :users
   namespace 'api' do
     namespace 'v1' do
-      post :sessions, to: 'sessions#create'
+      resources :api_keys, only: [:create], defaults: { format: :json }
 
       resources :games, only: [:show, :index], defaults: { format: :json } do
         member do

@@ -9,21 +9,8 @@ class Api::BaseController < ApplicationController
   end
 
   def authenticate_user_from_token!
-    # Find the user using a non-secret token
-    if user_email = params[:user_email].presence
-      User.find_by_email(user_email)
-    elsif device_id = params[:device_id].presence
-      User.find_by_email(device_id)
-    end
-
-    # Compare using a constant time comparator, mitigating time attacks that could occur
-    # if we used an optimized comparison or queried for the user by authentication_token
-    if user && Devise.secure_compare(user.authentication_token, params[:user_token])
-      sign_in user, store: false
-    else
-      # TODO we need to return 401 / access denied
-      raise StandardError.new("Authentication failed")
-    end
-
+    api_key = ApiKey.find_by_client_id!(params[:client_id])
+    sign_in api_key.user, store: false
+    # TODO HMAC
   end
 end

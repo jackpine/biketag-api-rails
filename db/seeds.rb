@@ -8,7 +8,7 @@
 
 class Seeds
 
-  class_attribute :lucile_spot
+  class_attribute :lucile_spot, :user
 
   def self.seed!
     self.lucile_spot = Spot.new location: { type: "Point",
@@ -18,5 +18,12 @@ class Seeds
       lucile_spot.image = lucile_image
       lucile_spot.save!
     end
+
+    self.user = User.create!
+    self.user.create_api_key!
+  end
+
+  def self.auth_params
+    { client_id: self.user.api_key.client_id }
   end
 end

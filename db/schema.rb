@@ -11,11 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150510023937) do
+ActiveRecord::Schema.define(version: 20150515213657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "postgis"
+
+  create_table "api_keys", force: :cascade do |t|
+    t.string   "client_id",  null: false
+    t.integer  "user_id",    null: false
+    t.string   "secret",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "api_keys", ["client_id"], name: "index_api_keys_on_client_id", unique: true, using: :btree
+  add_index "api_keys", ["secret"], name: "index_api_keys_on_secret", unique: true, using: :btree
+  add_index "api_keys", ["user_id"], name: "index_api_keys_on_user_id", using: :btree
 
   create_table "guesses", force: :cascade do |t|
     t.geometry "location",   limit: {:srid=>4326, :type=>"point"}, null: false
@@ -52,16 +64,13 @@ ActiveRecord::Schema.define(version: 20150510023937) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "authentication_token",                null: false
-    t.string   "device_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "users", ["device_id", "email"], name: "index_users_on_device_id_and_email", unique: true, using: :btree
-  add_index "users", ["device_id"], name: "index_users_on_device_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "api_keys", "users"
   add_foreign_key "guesses", "spots"
 end

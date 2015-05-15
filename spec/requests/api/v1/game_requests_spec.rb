@@ -11,7 +11,7 @@ describe 'game requests' do
 
       it 'returns the current spot' do
 
-        get '/api/v1/games/1/current_spot.json'
+        get '/api/v1/games/1/current_spot.json', Seeds.auth_params
         expect(response).to be_success
 
         actual_response = JSON.parse(response.body)

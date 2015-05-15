@@ -24,7 +24,7 @@ describe 'spot requests' do
           }
         }
 
-        post '/api/v1/spots', spot_parameters
+        post '/api/v1/spots', spot_parameters.merge(Seeds.auth_params)
         expect(response).to be_success
 
         actual_response = JSON.parse(response.body)

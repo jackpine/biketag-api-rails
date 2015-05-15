@@ -3,26 +3,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   # :registerable, :recoverable, :rememberable, 
   devise :database_authenticatable, :trackable, :validatable
+  has_one :api_key
 
-  validates :device_id, uniqueness: { scope: :email, message: "has already been registered" }
   validates :email, uniqueness: { allow_blank: true }
-
-  before_save :ensure_authentication_token
-
-  def ensure_authentication_token
-    if authentication_token.blank?
-      self.authentication_token = generate_authentication_token
-    end
-  end
-
-  def session
-    raise StandardError.new("Can't return session for uninitialized user") unless (id && authentication_token)
-
-    {
-      user_id: id,
-      authentication_token: authentication_token
-    }
-  end
 
   # We allow users to identify using their device id
   def email_required?
@@ -34,14 +17,4 @@ class User < ActiveRecord::Base
   def password_required?
     email.present?
   end
-
-  private
-
-  def generate_authentication_token
-    loop do
-      token = Devise.friendly_token
-      break token unless User.where(authentication_token: token).first
-    end
-  end
-
 end
