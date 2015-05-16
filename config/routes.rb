@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-
-  devise_for :users
-
-  # We don't have any views to auth users yet
-  # - only the sessions/api key exchange
-  # devise_for :users
   namespace 'api' do
     namespace 'v1' do
       resources :api_keys, only: [:create], defaults: { format: :json }
@@ -20,5 +14,10 @@ Rails.application.routes.draw do
   end
 
   root to: "pages#home"
+
+  # We don't want to use any of the devise routes, but tests are failing (and
+  # maybe the app fails, who knows?) without declaring a devise scope
+  devise_for :users, skip: [ :sessions, :passwords, :registrations,
+                             :confirmations]
 
 end
