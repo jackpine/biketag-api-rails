@@ -14,6 +14,6 @@ RUN chown -R app /home/app
 
 # Don't install gems as root, and don't put them in the app directory
 RUN mkdir /home/app/.bundle
-ADD config/containers/api/conf/bundle-config /home/app/.bundle/config
-ADD config/containers/api/conf/bash-aliases /home/app/.bash_aliases
+ADD config/containers/api-dev/conf/bundle-config /home/app/.bundle/config
+ADD config/containers/api-dev/conf/bash-aliases /home/app/.bash_aliases
 
