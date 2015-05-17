@@ -36,5 +36,6 @@ module BikeTag
     config.middleware.insert_before(ActionDispatch::Static,
                                     Rack::PermissiveCors)
 
+    config.default_host = ENV['RAILS_DEFAULT_HOST']
   end
 end

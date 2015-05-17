@@ -9,7 +9,7 @@ if Rails.application.config.host_uploads_locally
       local_root: "#{Rails.root}/public"
     },
     fog_directory: 'uploads',
-    fog_host: 'http://localhost:3000/uploads'
+    fog_host: "http://#{Rails.application.config.default_host}/uploads"
   }
 else
   options = {
