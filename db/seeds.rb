@@ -23,7 +23,8 @@ class Seeds
     self.user.create_api_key!
   end
 
-  def self.auth_params
-    { client_id: self.user.api_key.client_id }
+  def self.authorization_headers
+    { HTTP_AUTHORIZATION: ActionController::HttpAuthentication::Token.encode_credentials(self.user.api_key.client_id) }
   end
+
 end
