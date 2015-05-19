@@ -6,8 +6,8 @@ class ApiKey < ActiveRecord::Base
   after_initialize :ensure_authentication_tokens
 
   def ensure_authentication_tokens
-    self.client_id = self.class.friendly_token_for(:client_id)
-    self.secret = self.class.friendly_token_for(:secret)
+    self.client_id ||= self.class.friendly_token_for(:client_id)
+    self.secret ||= self.class.friendly_token_for(:secret)
   end
 
   def self.friendly_token_for(attr)
