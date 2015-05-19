@@ -9,8 +9,12 @@ class Api::BaseController < ApplicationController
   end
 
   def authenticate_user_from_token!
-    api_key = ApiKey.find_by_client_id!(params[:client_id])
-    sign_in api_key.user, store: false
-    # TODO HMAC
+    api_key = ApiKey.find_by_client_id(params[:client_id])
+    if api_key
+      # TODO HMAC
+      sign_in api_key.user, store: false
+    else
+      render :json=> {:success=>false, :message=>"Error with your login or password"}, :status=>401
+    end
   end
 end
