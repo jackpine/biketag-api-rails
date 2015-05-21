@@ -13,8 +13,8 @@ Setup
 There are two containers - an app container and a db container. If you
 haven't already built the containers, you'll need to do so:
 
-    me@my-laptop$ cd config/containers/db/build.sh
-    me@my-laptop$ cd config/containers/api-dev/build.sh
+    me@my-laptop$ config/containers/db/build.sh
+    me@my-laptop$ config/containers/api-dev/build.sh
 
 You should now be able to see a biketag/api-dev and a biketag/db image ready
 to be run.
