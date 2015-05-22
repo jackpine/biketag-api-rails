@@ -7,14 +7,46 @@ Prerequistes
 Install docker. [Installing on a mac](https://docs.docker.com/installation/mac/)
 also requires installing boot2docker.
 
+#### docker
+
+Install the Kinematic app mentioned in the link above.
+
+#### boot2docker
+
+Use homebrew.
+
+```
+$ brew install boot2docker --without-docker
+To have launchd start boot2docker at login:
+    ln -sfv /usr/local/opt/boot2docker/*.plist ~/Library/LaunchAgents
+Then to load boot2docker now:
+    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.boot2docker.plist
+```
+
+#### Prepare
+
+```
+$ boot2docker init
+$ boot2docker up
+To connect the Docker client to the Docker daemon, please set:
+    export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
+    export DOCKER_TLS_VERIFY=1
+    export DOCKER_HOST=tcp://192.168.59.103:2376
+$ boot2docker down
+$ export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
+$ export DOCKER_TLS_VERIFY=1
+$ export DOCKER_HOST=tcp://192.168.59.103:2376
+$ boot2docker up
+```
+
 Setup
 -----
 
 There are two containers - an app container and a db container. If you
 haven't already built the containers, you'll need to do so:
 
-    me@my-laptop$ cd config/containers/db/build.sh
-    me@my-laptop$ cd config/containers/api-dev/build.sh
+    me@my-laptop$ config/containers/db/build.sh
+    me@my-laptop$ config/containers/api-dev/build.sh
 
 You should now be able to see a biketag/api-dev and a biketag/db image ready
 to be run.
