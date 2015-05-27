@@ -1,0 +1,6 @@
+FROM mdillon/postgis:latest
+MAINTAINER Michael Kirk <michael@jackpine.me>
+
+# TODO can we automate running `rake db:setup && RAILS_ENV=production rake db:setup` ?
+#      For now I'm doing that manually before uploading to docker hub
+
