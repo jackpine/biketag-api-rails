@@ -71,15 +71,19 @@ not `docker run <container>`.*
 
 You'll need to set up your database before the application will work.
 
-    me@my-laptop$ docker exec -ti biketag-api bash -l
+    me@my-laptop$ docker exec -ti biketag-api bash -l  (or biketag-api-dev if you're developing)
     root@api-container$ su - app
     app@api-container$ cd ~/biketag-api
-    app@api-container$ RAILS_ENV=production bin/rake db:setup
+    app@api-container$ RAILS_ENV=production bin/rake db:setup (ommit the RAILS_ENV if you're using biketag-api-dev)
 
 At this point you should be good to go. Verify that you are able to hit
 the api server from your local machine.
 
     me@my-laptop$ curl $(boot2docker ip)/api/v1/games/1/current_spot.json
+
+Or if you're in development
+
+    me@my-laptop$ curl $(boot2docker ip):3000/api/v1/games/1/current_spot.json
 
 Debugging
 ---------
