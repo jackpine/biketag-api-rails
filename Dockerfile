@@ -10,9 +10,6 @@ RUN rm /etc/nginx/sites-enabled/default
 
 ADD config/containers/api/conf/biketag-api.conf /etc/nginx/sites-enabled/biketag-api.conf
 
-# Docker Database Environment Variables
-ADD config/containers/api/conf/biketag-db-env.conf /etc/nginx/main.d/biketag-db-env.conf
-
 # Don't re-run bundle install unless Gemfile changes - otherwise if we do it
 # *after* we add the app, we'll run bundle install everytime any file in the
 # app changes.  Copy the Gemfile and Gemfile.lock into the image.
