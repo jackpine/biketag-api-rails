@@ -139,7 +139,7 @@ Staging
 
 
 ### Digital Ocean
-Provision a sngle CoreOs Host on Digital Ocean. It needs to have at
+Provision a single CoreOs Host on Digital Ocean. It needs to have at
 least a gig of ram, because, well... fucking ruby (bundle install fails
 on allocating memory on the 512mb node). For staging we'll run the DB
 and API containers on the same node.
@@ -150,44 +150,23 @@ Make these DNS entries
     CNAME api.biketag-staging.jackpine.me -> biketag-staging.jackpine.me
     CNAME db.biketag-staging.jackpine.me  -> biketag-staging.jackpine.me
 
-Copy the repository onto the new node.
+    me@my-laptop$ bin/deploy core@api.biketag-staging.jackpine.me
 
-    me@my-laptop$ ssh -A core@api.biketag-staging.jackpine.me
-    core@staging$ mkdir -p src/biketag
-    core@staging$ cd src/biketag
-    core@staging$ git clone github.com:michaelkirk/biketag-api.git
-
-Provision the database container
-
-    core@staging$ cd ~/src/biketag/biketag-api
-    core@staging$ config/containers/db/build.sh
-    core@staging$ config/containers/db/run.sh
-
-Provision the API Container
-
-    # Copy the .env file onto the docker host
-    # `.env` **must be present before we build the container**
-    me@my-laptop$ scp ~/src/biketag/biketag-api/.env core@api.biketag-staging.jackpine.me:src/biketag/biketag-api
-
-    core@staging$ cd src/biketag/biketag-api
-    core@staging$ config/containers/api/build.sh
-    core@staging$ config/containers/api/run.sh
-
-Stupid Workarounds
+Modify the Staging Environment
 
     core@staging$ docker exec -ti biketag-api bash -l
-    # Get api credentials
-    root@api-container$ env | grep DB
-    # update database.yml with the correct host/port
-    root@api-container$ vim /home/app/biketag-api/config/database.yml
-    root@api-container$ sv restart nginx
+    root@api-container$ vim ~app/biketag-api/.env
 
 Set up database
 
-    root@api-container$ cd /home/app/biketag-api
-    root@api-container$ RAILS_ENV=production bin/rake db:setup
+    root@api-container$ su - app
+    app@api-container$ cd ~/biketag_api
+    app@api-container$ RAILS_ENV=production bin/rake db:setup
+
+    # not sure if this is necessaryenv
+    root@biketag-api$ sv restart nginx
 
 You should be good to go!
 
-    me@my-laptop$ curl http://api.biketag-staging.jackpine.me:3000/api/v1/games/1/current_spot.json
+    me@my-laptop$ curl http://api.biketag-staging.jackpine.me/api/v1/games/1/current_spot.json
 
