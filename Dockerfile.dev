@@ -1,4 +1,4 @@
-FROM biketag/api:latest
+FROM jackpine/biketag-api:latest
 MAINTAINER Michael Kirk <michael@jackpine.me>
 
 # These changes are intended to make the production Docker image ammenable to
