@@ -20,6 +20,8 @@ ADD Gemfile.lock /tmp/Gemfile.lock
 RUN bundle install
 
 ADD . /home/app/biketag-api
+# Copy over template env file
+ADD .env-template /home/app/biketag-api/.env
 RUN chown -R app:app /home/app/biketag-api
 
 # Clean up APT when done.
