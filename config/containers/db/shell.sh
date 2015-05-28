@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker exec -ti biketag-db bash
+docker exec -ti biketag-db psql --username postgres
