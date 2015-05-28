@@ -9,7 +9,7 @@ also requires installing boot2docker.
 
 #### docker
 
-Install the Kinematic app mentioned in the link above.
+Install the Kitematic app mentioned in the link above.
 
 #### boot2docker
 
