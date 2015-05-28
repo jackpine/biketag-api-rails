@@ -125,6 +125,7 @@ Staging
  * create s3 bucket 'biketag-staging' (norcal region)
  * create IAM user 'biketag-staging-user'
  * attach an "inline security policy" called 'biketag-staging-uploader' with a definition like this:
+
 ```
 {
     "Statement": [
