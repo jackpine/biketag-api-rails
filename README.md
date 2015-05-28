@@ -1,7 +1,7 @@
 Hacking
 -------
 
-Prerequistes
+Prerequisites
 ------------
 
 Install docker. [Installing on a mac](https://docs.docker.com/installation/mac/)
@@ -86,7 +86,7 @@ You'll need to set up your database before the application will work.
 me@my-laptop$ docker exec -ti biketag-api bash -l  (or biketag-api-dev if you're developing)
 root@api-container$ su - app
 app@api-container$ cd ~/biketag-api
-app@api-container$ RAILS_ENV=production bin/rake db:setup (ommit the RAILS_ENV if you're using biketag-api-dev)
+app@api-container$ RAILS_ENV=production bin/rake db:setup (omit the RAILS_ENV if you're using biketag-api-dev)
 ```
 
 At this point you should be good to go. Verify that you are able to hit
@@ -124,7 +124,7 @@ Staging
 
  * create s3 bucket 'biketag-staging' (norcal region)
  * create IAM user 'biketag-staging-user'
- * attach an "inline security policy" called 'biketag-staging-uploader' wth a definition like this:
+ * attach an "inline security policy" called 'biketag-staging-uploader' with a definition like this:
 ```
 {
     "Statement": [
