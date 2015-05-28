@@ -24,7 +24,7 @@ context 'with a set up game' do
     it 'unauthorized requests responds with a JSON error' do
       get '/api/v1/games/1/current_spot.json'
       expect(response).to_not be_success
-      expect(JSON.parse(response.body)).to have_key('errors')
+      expect(JSON.parse(response.body)).to have_key('error')
     end
   end
 end

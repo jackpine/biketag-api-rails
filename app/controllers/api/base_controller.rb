@@ -10,7 +10,7 @@ class Api::BaseController < ApplicationController
 
   def authenticate_user_from_token!
     unless authenticated_from_token?
-      render json: { errors: [ { message: "Could not authenticate you", code: 32 } ]},
+      render json: { error: { message: "Could not authenticate you", code: 32 } },
              status: 401
     end
   end
