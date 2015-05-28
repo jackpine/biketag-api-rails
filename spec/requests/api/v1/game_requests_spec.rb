@@ -25,7 +25,7 @@ describe 'game requests' do
             user_id: 1, #TODO user system not implented yet.
             user_name: "michael", #TODO user system not implented yet.
             location: {"type"=>"Point", "coordinates"=>[-118.281617, 34.086588]},
-            image_url: sprintf('http://localhost:3000/uploads/spots/images/000/000/%03d/medium/952_lucile.jpg?1426555184', last_spot_id),
+            image_url: sprintf('http://www.example.com/uploads/spots/images/000/000/%03d/medium/952_lucile.jpg?1426555184', last_spot_id),
             created_at: Seeds.lucile_spot.created_at
           }
         }.to_json)
