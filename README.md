@@ -66,6 +66,21 @@ instead.
 me@my-laptop$ config/containers/api-dev/run.sh
 ```
 
+BEGINHACK
+
+On the api-dev container, to get file permssions correct, you'll
+have to change the uid of the app user to correspond to your local users
+id.
+
+```
+me@my-laptop$ docker exec -ti biketag-api-dev bash -l
+root@api-container$ ls -l /home/app/biketag-api
+# see what UID owns these files. Should be the same as the uid for me@my-laptop
+# change the UID of the app user to correspond to the files owner
+root@api-container$ vim /etc/passwd
+```
+ENDHACK
+
 You should see both a 'biketag-db' and a 'biketag-api' (or 'biketag-api-dev') container running.
 
 ```
