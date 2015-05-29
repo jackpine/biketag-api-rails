@@ -2,6 +2,7 @@ class Api::V1::SpotsController < Api::BaseController
 
   def create
     @spot = Spot.new(spot_params)
+    @spot.user = current_user
 
     # check if image was sent
     if params[:spot] && params[:spot][:image_data]
@@ -38,6 +39,7 @@ class Api::V1::SpotsController < Api::BaseController
       if @spot.save
         format.json { render action: 'show', status: :created, location: api_v1_spot_path(1, @spot, format: :json) }
       else
+        # TODO return properly formatted error message on failure
         format.json { render json: { error: @spot.errors.full_messages }, status: :unprocessable_entity }
       end
     end
