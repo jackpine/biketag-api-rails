@@ -1,1 +1,1 @@
-docker exec -ti biketag-api-dev su app -l -c bash
+docker exec -ti biketag-api-dev bash -c "su - app"
