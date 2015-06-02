@@ -1,6 +1,8 @@
 class Guess < ActiveRecord::Base
 
   belongs_to :spot
+  belongs_to :user
+
   validates :location, presence: true
   validates :spot, associated: true, presence: true
   #validates :correct, inclusion: { in: [true, false] }

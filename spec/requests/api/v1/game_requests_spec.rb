@@ -7,11 +7,11 @@ describe 'game requests' do
         require Rails.root + 'db/seeds.rb'
         Seeds.seed!
       end
+
       let(:last_spot_id) { Spot.last.id }
 
       it 'returns the current spot' do
-
-        get '/api/v1/games/1/current_spot.json'
+        get '/api/v1/games/1/current_spot.json', nil, Seeds.authorization_headers
         expect(response).to be_success
 
         actual_response = JSON.parse(response.body)

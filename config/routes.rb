@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-
   namespace 'api' do
     namespace 'v1' do
+      resources :api_keys, only: [:create], defaults: { format: :json }
+
       resources :games, only: [:show, :index], defaults: { format: :json } do
         member do
           get :current_spot
@@ -11,5 +12,12 @@ Rails.application.routes.draw do
       resources :guesses, only: [:create, :show, :index], defaults: { format: :json }
     end
   end
+
+  root to: "pages#home"
+
+  # We don't want to use any of the devise routes, but tests are failing (and
+  # maybe the app fails, who knows?) without declaring a devise scope
+  devise_for :users, skip: [ :sessions, :passwords, :registrations,
+                             :confirmations]
 
 end

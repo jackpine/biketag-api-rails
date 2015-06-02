@@ -8,15 +8,25 @@
 
 class Seeds
 
-  class_attribute :lucile_spot
+  class_attribute :lucile_spot, :user
 
   def self.seed!
-    self.lucile_spot = Spot.new location: { type: "Point",
-                                  coordinates: [-118.281617, 34.086588] }
+    self.user = User.create!
+    self.user.create_api_key!
+
+    self.lucile_spot = Spot.new(location: { type: "Point",
+                                            coordinates: [-118.281617, 34.086588] })
+    self.lucile_spot.user = self.user
     lucile_image_path = Rails.root + 'db/seeds/images/952_lucile.jpg'
     File.open(lucile_image_path) do |lucile_image|
       lucile_spot.image = lucile_image
       lucile_spot.save!
     end
+
   end
+
+  def self.authorization_headers
+    { HTTP_AUTHORIZATION: ActionController::HttpAuthentication::Token.encode_credentials(self.user.api_key.client_id) }
+  end
+
 end

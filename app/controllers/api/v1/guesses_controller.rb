@@ -2,8 +2,11 @@ class Api::V1::GuessesController < Api::BaseController
 
   def create
     spot = Spot.find(guess_params[:spot_id])
-    @guess = spot.guesses.create!(guess_params)
+    @guess = spot.guesses.new(guess_params)
+    @guess.user = current_user
+    @guess.save!
 
+    # TODO return properly formatted error message on failure
     respond_to do |format|
       format.json { render :show }
     end
