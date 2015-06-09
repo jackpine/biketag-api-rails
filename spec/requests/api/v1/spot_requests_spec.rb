@@ -15,7 +15,7 @@ describe 'spot requests' do
 
         spot_parameters = {
           spot: {
-            game_id: 1,
+            game_id: Seeds.game.id,
             location: {
               type: 'Point',
               coordinates: [-118.3240, 34.0937]

@@ -2,6 +2,7 @@ class Spot < ActiveRecord::Base
 
   has_many :guesses
   belongs_to :user
+  belongs_to :game
 
   has_attached_file :image, styles: { large: '1600x1600>',
                                       medium: '800x800>',

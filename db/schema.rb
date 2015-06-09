@@ -42,10 +42,8 @@ ActiveRecord::Schema.define(version: 20150609182408) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id",                                          null: false
-    t.integer  "game_id",                                          null: false
   end
 
-  add_index "guesses", ["game_id"], name: "index_guesses_on_game_id", using: :btree
   add_index "guesses", ["location"], name: "index_guesses_on_location", using: :btree
   add_index "guesses", ["spot_id"], name: "index_guesses_on_spot_id", using: :btree
   add_index "guesses", ["user_id"], name: "index_guesses_on_user_id", using: :btree
@@ -85,7 +83,6 @@ ActiveRecord::Schema.define(version: 20150609182408) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "api_keys", "users"
-  add_foreign_key "guesses", "games"
   add_foreign_key "guesses", "spots"
   add_foreign_key "guesses", "users"
   add_foreign_key "spots", "games"

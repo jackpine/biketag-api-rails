@@ -62,7 +62,7 @@ class Api::V1::SpotsController < Api::BaseController
   private
 
   def spot_params
-    params.require(:spot).permit(location: [ :type, coordinates: [] ])
+    params.require(:spot).permit(:game_id, location: [ :type, coordinates: [] ])
   end
 
 end
