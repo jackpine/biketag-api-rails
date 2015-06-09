@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/jackpine/rack-permissive-cors.git
-  revision: 83cf32550c5c7f6583c07ef02e3a7ec9abcda767
+  revision: 73c880962ed57602aca4ccbcdbf1673d91e74c66
   specs:
     rack-permissive-cors (0.1.0)
 
