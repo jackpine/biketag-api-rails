@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150529212112) do
+ActiveRecord::Schema.define(version: 20150609182408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,11 @@ ActiveRecord::Schema.define(version: 20150529212112) do
   add_index "api_keys", ["secret"], name: "index_api_keys_on_secret", unique: true, using: :btree
   add_index "api_keys", ["user_id"], name: "index_api_keys_on_user_id", using: :btree
 
+  create_table "games", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "guesses", force: :cascade do |t|
     t.geometry "location",   limit: {:srid=>4326, :type=>"point"}, null: false
     t.integer  "spot_id",                                          null: false
@@ -37,8 +42,10 @@ ActiveRecord::Schema.define(version: 20150529212112) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id",                                          null: false
+    t.integer  "game_id",                                          null: false
   end
 
+  add_index "guesses", ["game_id"], name: "index_guesses_on_game_id", using: :btree
   add_index "guesses", ["location"], name: "index_guesses_on_location", using: :btree
   add_index "guesses", ["spot_id"], name: "index_guesses_on_spot_id", using: :btree
   add_index "guesses", ["user_id"], name: "index_guesses_on_user_id", using: :btree
@@ -52,8 +59,10 @@ ActiveRecord::Schema.define(version: 20150529212112) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id",                                                  null: false
+    t.integer  "game_id",                                                  null: false
   end
 
+  add_index "spots", ["game_id"], name: "index_spots_on_game_id", using: :btree
   add_index "spots", ["location"], name: "index_spots_on_location", using: :btree
   add_index "spots", ["user_id"], name: "index_spots_on_user_id", using: :btree
 
@@ -76,7 +85,9 @@ ActiveRecord::Schema.define(version: 20150529212112) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "api_keys", "users"
+  add_foreign_key "guesses", "games"
   add_foreign_key "guesses", "spots"
   add_foreign_key "guesses", "users"
+  add_foreign_key "spots", "games"
   add_foreign_key "spots", "users"
 end
