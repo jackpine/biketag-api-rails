@@ -1,13 +1,33 @@
 require 'rails_helper'
 
 describe 'game requests' do
-  describe 'GET /api/v1/games/1/current_spot' do
-    context 'with a set up game' do
-      before do
-        require Rails.root + 'db/seeds.rb'
-        Seeds.seed!
-      end
+  context 'with a set up game' do
+    before do
+      require Rails.root + 'db/seeds.rb'
+      Seeds.seed!
+    end
 
+    describe 'GET /api/v1/games' do
+      it 'returns all the games' do
+        get "/api/v1/games.json", nil, Seeds.authorization_headers
+        expect(response).to be_success
+
+        actual_response = JSON.parse(response.body)
+
+        expected_response = JSON.parse({
+          games: [
+            { id: Seeds.game.id,
+              name: Seeds.game.name,
+              spot_ids: Seeds.game.spot_ids
+            }
+          ]
+        }.to_json)
+
+        expect(actual_response).to eq(expected_response)
+      end
+    end
+
+    describe 'GET /api/v1/games/1/current_spot' do
       let(:last_spot_id) { Spot.last.id }
 
       it 'returns the current spot' do

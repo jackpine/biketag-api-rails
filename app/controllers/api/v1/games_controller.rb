@@ -9,7 +9,7 @@ class Api::V1::GamesController < Api::BaseController
   end
 
   def index
-    @games = Games.all
+    @games = Game.all
     respond_to do |format|
       format.json { render :index }
     end
