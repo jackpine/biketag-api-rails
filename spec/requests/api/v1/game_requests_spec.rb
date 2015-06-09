@@ -11,19 +11,19 @@ describe 'game requests' do
       let(:last_spot_id) { Spot.last.id }
 
       it 'returns the current spot' do
-        get '/api/v1/games/1/current_spot.json', nil, Seeds.authorization_headers
+        get "/api/v1/games/#{Seeds.game.id}/current_spot.json", nil, Seeds.authorization_headers
         expect(response).to be_success
 
         actual_response = JSON.parse(response.body)
 
         expected_response = JSON.parse({
           spot:  {
-            game_id: 1,
+            game_id: Seeds.game.id,
             guess_ids: [],
             id: last_spot_id,
             url: "http://www.example.com/api/v1/spots/#{last_spot_id}",
-            user_id: 1, #TODO user system not implented yet.
-            user_name: "michael", #TODO user system not implented yet.
+            user_id: Seeds.user.id,
+            user_name: Seeds.user.name,
             location: {"type"=>"Point", "coordinates"=>[-118.281617, 34.086588]},
             image_url: sprintf('http://www.example.com/uploads/spots/images/000/000/%03d/medium/952_lucile.jpg?1426555184', last_spot_id),
             created_at: Seeds.lucile_spot.created_at

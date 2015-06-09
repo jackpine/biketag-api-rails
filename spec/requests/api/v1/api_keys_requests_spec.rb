@@ -18,7 +18,7 @@ context 'with a set up game' do
   end
   describe 'authorization' do
     it 'authorized requests responds without error' do
-      get '/api/v1/games/1/current_spot.json', nil, Seeds.authorization_headers
+      get "/api/v1/games/#{Seeds.game.id}/current_spot.json", nil, Seeds.authorization_headers
       expect(response).to be_success
     end
     it 'unauthorized requests responds with a JSON error' do
