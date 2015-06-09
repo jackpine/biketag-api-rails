@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   namespace 'api' do
+    match '*any_options_path', to: 'base#handle_options_request', via: :options
     namespace 'v1' do
       resources :api_keys, only: [:create], defaults: { format: :json }
-
       resources :games, only: [:show, :index], defaults: { format: :json } do
         member do
           get :current_spot
