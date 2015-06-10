@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     namespace 'v1' do
       resources :api_keys, only: [:create], defaults: { format: :json }
       resources :games, only: [:show, :index], defaults: { format: :json } do
+        collection do
+          get :current_spots
+        end
         member do
           get :current_spot
         end

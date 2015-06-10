@@ -9,4 +9,8 @@ class Game < ActiveRecord::Base
   def name
     "Game #{id}"
   end
+
+  def self.current_spots
+    self.all.map(&:current_spot)
+  end
 end
