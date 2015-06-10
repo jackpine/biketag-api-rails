@@ -6,6 +6,7 @@ describe 'game requests' do
       require Rails.root + 'db/seeds.rb'
       Seeds.seed!
     end
+    let(:last_spot_id) { Spot.last.id }
 
     describe 'GET /api/v1/games' do
       it 'returns all the games' do
@@ -18,18 +19,38 @@ describe 'game requests' do
           games: [
             { id: Seeds.game.id,
               name: Seeds.game.name,
+              current_spot: {
+                game_id: Seeds.game.id,
+                guess_ids: [],
+                id: last_spot_id,
+                url: "http://www.example.com/api/v1/spots/#{last_spot_id}",
+                user_id: Seeds.user.id,
+                user_name: Seeds.user.name,
+                location: {"type"=>"Point", "coordinates"=>[-118.281617, 34.086588]},
+                image_url: sprintf('http://www.example.com/uploads/spots/images/000/000/%03d/medium/952_lucile.jpg?1426555184', last_spot_id),
+                created_at: Seeds.lucile_spot.created_at
+              },
               spot_ids: Seeds.game.spot_ids
             }
           ]
         }.to_json)
 
+        expect(actual_response).to be_a(Hash)
+        expect(actual_response).to have_key("games")
+        expect(actual_response["games"]).to be_an(Array)
+
+        # Image URL has to be checked separately
+        expected_image_url = expected_response['games'][0]['current_spot'].delete('image_url')
+        actual_image_url = actual_response['games'][0]['current_spot'].delete('image_url')
         expect(actual_response).to eq(expected_response)
+
+        actual_image_url_without_query_parameters = actual_image_url.split("?")[0]
+        expected_image_url_without_query_parameters = expected_image_url.split("?")[0]
+        expect(actual_image_url_without_query_parameters).to match(expected_image_url_without_query_parameters)
       end
     end
 
     describe 'GET /api/v1/games/1/current_spot' do
-      let(:last_spot_id) { Spot.last.id }
-
       it 'returns the current spot' do
         get "/api/v1/games/#{Seeds.game.id}/current_spot.json", nil, Seeds.authorization_headers
         expect(response).to be_success
