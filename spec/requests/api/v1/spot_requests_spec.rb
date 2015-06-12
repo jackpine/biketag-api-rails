@@ -15,7 +15,7 @@ describe 'spot requests' do
 
         spot_parameters = {
           spot: {
-            game_id: 1,
+            game_id: Seeds.game.id,
             location: {
               type: 'Point',
               coordinates: [-118.3240, 34.0937]
@@ -32,15 +32,15 @@ describe 'spot requests' do
         expected_response = JSON.parse({
           spot:  {
             id: last_spot.id,
-            game_id: 1,
+            game_id: Seeds.game.id,
             guess_ids: [],
             url: "http://www.example.com/api/v1/spots/#{last_spot.id}",
             location: {
               type: 'Point',
               coordinates: [-118.324, 34.0937]
             },
-            user_id: 1, #TODO user system not implented yet.
-            user_name: "michael", #TODO user system not implented yet.
+            user_id: Seeds.user.id,
+            user_name: Seeds.user.name,
             image_url: sprintf('http://www.example.com/uploads/spots/images/000/000/%03d/medium/%s.jpg', last_spot.id, uuid_regex),
             created_at: last_spot.created_at
           }

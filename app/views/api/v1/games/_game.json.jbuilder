@@ -1,3 +1,4 @@
-json.id game[:id]
-json.name game[:name]
-json.spots game[:spot_ids]
+json.extract! game, :id, :name, :spot_ids
+json.current_spot do
+  json.partial! 'api/v1/spots/spot', spot: game.current_spot
+end

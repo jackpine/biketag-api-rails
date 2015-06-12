@@ -17,4 +17,8 @@ class User < ActiveRecord::Base
   def password_required?
     email.present?
   end
+
+  def name
+    "User ##{id}"
+  end
 end
