@@ -12,6 +12,8 @@ class Guess < ActiveRecord::Base
     self[:correct] ||= close_enough?
   end
 
+  delegate :id, to: :game, prefix: true
+
   before_save do
     correct
 
