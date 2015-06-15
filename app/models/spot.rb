@@ -12,10 +12,6 @@ class Spot < ActiveRecord::Base
   validates_attachment :image, presence: true,
                                content_type: { content_type: ['image/jpg', 'image/jpeg'] }
 
-  def self.current_spot
-    Spot.last
-  end
-
   def image_url
     image.url(:medium)
   end

@@ -1,4 +1,3 @@
-json.url api_v1_guess_url(1, guess.spot, guess, format: :json)
-json.extract! guess, :id, :created_at, :correct, :location, :distance, :spot_id
-json.game_id 1
+json.url api_v1_guess_url(guess, format: :json)
+json.extract! guess, :id, :created_at, :correct, :location, :distance, :spot_id, :game_id
 json.user_name guess.user.name
