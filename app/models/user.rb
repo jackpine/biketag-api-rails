@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_one :api_key
 
   validates :email, uniqueness: { allow_blank: true }
+  validates :name, uniqueness: { allow_blank: true},
+                   length: { in: 4..16, allow_blank: true }
 
   # We allow users to identify using their device id
   def email_required?
@@ -19,6 +21,6 @@ class User < ActiveRecord::Base
   end
 
   def name
-    "User ##{id}"
+    self[:name] || "User ##{id}"
   end
 end
