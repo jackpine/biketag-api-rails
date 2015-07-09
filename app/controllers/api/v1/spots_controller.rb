@@ -39,8 +39,7 @@ class Api::V1::SpotsController < Api::BaseController
       if @spot.save
         format.json { render action: 'show', status: :created, location: api_v1_spot_path(1, @spot, format: :json) }
       else
-        # TODO return properly formatted error message on failure
-        format.json { render json: { error: @spot.errors.full_messages }, status: :unprocessable_entity }
+        format.json { render json: { error: { code: 133, message: @spot.errors.full_messages.join(',') }}, status: :unprocessable_entity }
       end
     end
   end

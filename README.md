@@ -1,5 +1,18 @@
+API Docs
+========
+
+Errors
+------
+API Errors are presents as following:
+    { "error": { "message": "some descriptive message string", "code": 123 }}
+
+### Codes
+
+    32  - could not authenticate you
+    133 - unable to save spot
+
 Hacking
--------
+=======
 
 Prerequisites
 ------------
