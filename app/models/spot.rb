@@ -12,6 +12,19 @@ class Spot < ActiveRecord::Base
   validates_attachment :image, presence: true,
                                content_type: { content_type: ['image/jpg', 'image/jpeg'] }
 
+  validates_numericality_of :distance_from_last_spot, on: :create,
+                                                     greater_than: 0.003, # not sure what units this is in, but anecdoatally, it's about 250 meters
+                                                     message: 'must be farther',
+                                                     allow_nil: true #nil for first spot in game
+
+  validates_presence_of :user, :game
+
+  def distance_from_last_spot
+    return nil if self.game.spots.empty?
+
+    self[:location].distance(self.game.spots.last[:location])
+  end
+
   def image_url
     image.url(:medium)
   end

@@ -23,7 +23,7 @@ class Guess < ActiveRecord::Base
   end
 
   def close_enough?
-    # This distance was generated experimentally. It's about 250 feet.
+    # This distance was generated experimentally. It's about 250 feet (75 meters).
     # I have no idea what unit this measurement could possibly be in.
     # Some gentle research says it's in "whatever unit your projection is in"
     distance < 0.001

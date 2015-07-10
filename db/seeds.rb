@@ -15,9 +15,10 @@ class Seeds
     self.user.create_api_key!
 
     self.game = Game.create!
-    self.lucile_spot = game.spots.new(location: { type: "Point",
-                                                  coordinates: [-118.281617, 34.086588] })
-    self.lucile_spot.user = self.user
+    self.lucile_spot = Spot.new(location: { type: "Point",
+                                            coordinates: [-118.281617, 34.086588] },
+                                game: self.game,
+                                user: self.user)
     lucile_image_path = Rails.root + 'db/seeds/images/952_lucile.jpg'
     File.open(lucile_image_path) do |lucile_image|
       lucile_spot.image = lucile_image
