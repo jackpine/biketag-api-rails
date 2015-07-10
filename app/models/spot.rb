@@ -13,7 +13,7 @@ class Spot < ActiveRecord::Base
                                content_type: { content_type: ['image/jpg', 'image/jpeg'] }
 
   validates_numericality_of :distance_from_last_spot, on: :create,
-                                                     greater_than: 0.003,
+                                                     greater_than: 0.003, # not sure what units this is in, but anecdoatally, it's about 250 meters
                                                      message: 'must be farther',
                                                      allow_nil: true #nil for first spot in game
 
