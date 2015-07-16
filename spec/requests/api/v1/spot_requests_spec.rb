@@ -64,7 +64,7 @@ describe 'spot requests' do
         it 'should fail to create the new spot' do
           post '/api/v1/spots', new_spot_parameters, Seeds.authorization_headers
           expect(response).not_to be_success
-          expect(JSON.parse(response.body)['error']).to include(/farther/)
+          expect(JSON.parse(response.body)['error']['message']).to include('farther')
         end
       end
     end
