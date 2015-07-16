@@ -12,8 +12,8 @@ class Guess < ActiveRecord::Base
                                       small: '400x400>',
                                       thumb: '100x100>' }
 
-  validates_attachment :image, presence: true,
-                               content_type: { content_type: ['image/jpg', 'image/jpeg'] }
+  validates_attachment :image, content_type: { content_type: ['image/jpg', 'image/jpeg'] }
+                               # presence: true, # guess image is currently optional
 
   def image_url
     image.url(:medium)
