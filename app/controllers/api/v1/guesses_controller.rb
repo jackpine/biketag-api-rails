@@ -40,7 +40,7 @@ class Api::V1::GuessesController < Api::BaseController
       if @guess.save
         format.json { render action: 'show', status: :created, location: api_v1_guess_path(1, @guess, format: :json) }
       else
-        format.json { render json: { error: { code: 133, message: @guess.errors.full_messages.join(',') }}, status: :unprocessable_entity }
+        format.json { render json: { error: { code: 143, message: @guess.errors.full_messages.join(',') }}, status: :unprocessable_entity }
       end
     end
   end
