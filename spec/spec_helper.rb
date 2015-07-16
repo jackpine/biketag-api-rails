@@ -61,3 +61,7 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 end
+
+def uuid_regex
+  '\h{8}-\h{4}-\h{4}-\h{4}-\h{12}'
+end

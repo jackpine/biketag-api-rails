@@ -10,6 +10,7 @@ API Errors are presents as following:
 
     32  - could not authenticate you
     133 - unable to save spot
+    143 - unable to save guess
 
 Hacking
 =======
