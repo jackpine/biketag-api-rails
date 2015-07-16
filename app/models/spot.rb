@@ -19,6 +19,10 @@ class Spot < ActiveRecord::Base
 
   validates_presence_of :user, :game
 
+  scope :near, ->(point) {
+    order("ST_Distance(location, ST_GeomFromText('#{point.as_text}', 4326))")
+  }
+
   def distance_from_last_spot
     return nil if self.game.spots.empty?
 

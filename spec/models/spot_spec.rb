@@ -45,4 +45,17 @@ describe Spot do
       it { expect(subject).to be_within(0.00001).of(0.21361) }
     end
   end
+
+  describe '.near' do
+    let(:point) { RGeo::GeoJSON.decode({ 'type' => 'Point', 'coordinates' => [118.0, 34.0] }) }
+    subject { Spot.near(point) }
+    context 'with some spots at various distances' do
+      let!(:near_spot) { Spot.create!(location: { type: 'Point', coordinates: [118.1111, 34.1111] }, user: user, image: image,  game: game) }
+      let!(:far_spot) { Spot.create!(location: { type: 'Point', coordinates: [118.2222, 34.2222] }, user: user, image: image,  game: game) }
+      let!(:mid_way_spot) { Spot.create!(location: { type: 'Point', coordinates: [118.2222, 34.1111] }, user: user, image: image,  game: game) }
+      it 'orders spot by distance' do
+        expect(subject).to eq([near_spot, mid_way_spot, far_spot])
+      end
+    end
+  end
 end

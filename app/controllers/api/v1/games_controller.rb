@@ -9,7 +9,13 @@ class Api::V1::GamesController < Api::BaseController
   end
 
   def current_spots
-    @spots = Game.current_spots
+    @spots = Game.current_spots.limit(20)
+
+    if params[:location]
+      location = RGeo::GeoJSON.decode(my_location)
+      @spots = @spots.near(location)
+    end
+
     respond_to do |format|
       format.json
     end
