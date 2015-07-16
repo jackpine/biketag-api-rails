@@ -31,7 +31,7 @@ describe 'guess requests' do
           expect(actual_response['guess']['correct']).to eq(true)
 
           # Image URL has to be checked separately
-          expected_image_url = sprintf('http://www.example.com/uploads/guesses/images/000/000/%03d/medium/%s.jpg', Guess.last.id, uuid_regex),
+          expected_image_url = sprintf('http://www.example.com/uploads/guesses/images/000/000/%03d/medium/%s.jpg', Guess.last.id, uuid_regex)
           actual_image_url = actual_response['guess'].delete('image_url')
           actual_image_url_without_query_parameters = actual_image_url.split("?")[0]
           expected_image_url_without_query_parameters = expected_image_url.split("?")[0]

@@ -6,7 +6,22 @@ class Guess < ActiveRecord::Base
 
   validates :location, presence: true
   validates :spot, associated: true, presence: true
-  #validates :correct, inclusion: { in: [true, false] }
+
+  has_attached_file :image, styles: { large: '1600x1600>',
+                                      medium: '800x800>',
+                                      small: '400x400>',
+                                      thumb: '100x100>' }
+
+  validates_attachment :image, presence: true,
+                               content_type: { content_type: ['image/jpg', 'image/jpeg'] }
+
+  def image_url
+    image.url(:medium)
+  end
+
+  def self.generate_image_filename
+    SecureRandom.uuid + '.jpg'
+  end
 
   def correct
     self[:correct] ||= close_enough?
