@@ -8,9 +8,9 @@ describe 'spot requests' do
         Seeds.seed!
       end
       let(:previous_spot) { Spot.last }
-      let(:image_data) { Base64.encode64(File.read(Rails.root + 'db/seeds/images/952_lucile.jpg')) }
+      let(:image_data) { Base64.encode64(fake_file.read) }
       let(:new_spot_coordinates) { [-118.3240, 34.0937] }
-      let(:new_spot_parameters) do 
+      let(:new_spot_parameters) do
         {
           spot: {
             game_id: Seeds.game.id,
@@ -29,7 +29,6 @@ describe 'spot requests' do
         expect(response).to be_success
 
         actual_response = JSON.parse(response.body)
-        uuid_regex = '\h{8}-\h{4}-\h{4}-\h{4}-\h{12}'
         expected_response = JSON.parse({
           spot:  {
             id: previous_spot.id,

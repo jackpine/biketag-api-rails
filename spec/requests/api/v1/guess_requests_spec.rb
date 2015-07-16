@@ -8,12 +8,14 @@ describe 'guess requests' do
         Seeds.seed!
       end
       let(:spot_id) { Seeds.lucile_spot.id }
+      let(:image_data) { Base64.encode64(fake_file.read) }
 
       context 'with a correct guess' do
         let(:guess_params) do
           {
             guess: {
               spot_id: spot_id,
+              image_data: image_data,
               location: {
                 type: 'Point',
                 coordinates: [-118.2816, 34.0865]
@@ -27,6 +29,13 @@ describe 'guess requests' do
 
           actual_response = JSON.parse(response.body)
           expect(actual_response['guess']['correct']).to eq(true)
+
+          # Image URL has to be checked separately
+          expected_image_url = sprintf('http://www.example.com/uploads/guesses/images/000/000/%03d/medium/%s.jpg', Guess.last.id, uuid_regex),
+          actual_image_url = actual_response['guess'].delete('image_url')
+          actual_image_url_without_query_parameters = actual_image_url.split("?")[0]
+          expected_image_url_without_query_parameters = expected_image_url.split("?")[0]
+          expect(actual_image_url_without_query_parameters).to match(expected_image_url_without_query_parameters)
         end
       end
 
@@ -35,6 +44,7 @@ describe 'guess requests' do
           {
             guess: {
               spot_id: spot_id,
+              image_data: image_data,
               location: {
                 type: 'Point',
                 coordinates: [-117.3240, 33.0937]
