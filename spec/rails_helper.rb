@@ -29,3 +29,15 @@ RSpec.configure do |config|
      end
    end
 end
+
+def stub_authentication!
+  allow(controller).to receive(:authenticate_user_from_token!)
+end
+
+def fake_file
+  File.open('db/seeds/images/952_lucile.jpg')
+end
+
+def uuid_regex
+  '\h{8}-\h{4}-\h{4}-\h{4}-\h{12}'
+end
