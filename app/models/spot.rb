@@ -19,6 +19,15 @@ class Spot < ActiveRecord::Base
 
   validates_presence_of :user, :game
 
+  def self.near(point)
+    order("ST_Distance(location, ST_GeomFromText('#{point.as_text}', 4326))")
+  end
+
+  def self.current(options = {limit: 20})
+    limit = options[:limit]
+    find_by_sql(['SELECT DISTINCT ON (spots.game_id) spots.* FROM spots ORDER BY spots.game_id, spots.id DESC LIMIT ?', limit])
+  end
+
   def distance_from_last_spot
     return nil if self.game.spots.empty?
 

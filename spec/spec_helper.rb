@@ -1,4 +1,3 @@
-require 'file_helper'
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
@@ -60,8 +59,4 @@ RSpec.configure do |config|
   # test failures related to randomization by passing the same `--seed` value
   # as the one that triggered the failure.
   Kernel.srand config.seed
-end
-
-def uuid_regex
-  '\h{8}-\h{4}-\h{4}-\h{4}-\h{12}'
 end
