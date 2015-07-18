@@ -35,7 +35,7 @@ class Spot < ActiveRecord::Base
   end
 
   def image_url
-    image.url(:medium)
+    image.url(:large)
   end
 
   def location=(val)
