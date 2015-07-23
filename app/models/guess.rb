@@ -59,4 +59,8 @@ class Guess < ActiveRecord::Base
   def location
     RGeo::GeoJSON.encode(self[:location])
   end
+
+  def promote_to_spot!
+    Spot.create!(location: self.location, image: self.image, user: self.user, game: self.game)
+  end
 end
