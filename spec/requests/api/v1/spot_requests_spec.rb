@@ -41,7 +41,7 @@ describe 'spot requests' do
             },
             user_id: Seeds.user.id,
             user_name: Seeds.user.name,
-            image_url: sprintf('http://www.example.com/uploads/spots/images/000/000/%03d/medium/%s.jpg', previous_spot.id, uuid_regex),
+            image_url: sprintf('http://www.example.com/uploads/spots/images/000/000/%03d/large/%s.jpg', previous_spot.id, uuid_regex),
             created_at: previous_spot.created_at
           }
         }.to_json)

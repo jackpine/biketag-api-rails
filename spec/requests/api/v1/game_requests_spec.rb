@@ -23,7 +23,7 @@ describe 'game requests' do
               user_id: Seeds.user.id,
               user_name: Seeds.user.name,
               location: {"type"=>"Point", "coordinates"=>[-118.281617, 34.086588]},
-              image_url: sprintf('http://www.example.com/uploads/spots/images/000/000/%03d/medium/952_lucile.jpg?1426555184', last_spot_id),
+              image_url: sprintf('http://www.example.com/uploads/spots/images/000/000/%03d/large/952_lucile.jpg?1426555184', last_spot_id),
               created_at: Seeds.lucile_spot.created_at
             }
           ]
@@ -63,7 +63,7 @@ describe 'game requests' do
                 user_id: Seeds.user.id,
                 user_name: Seeds.user.name,
                 location: {"type"=>"Point", "coordinates"=>[-118.281617, 34.086588]},
-                image_url: sprintf('http://www.example.com/uploads/spots/images/000/000/%03d/medium/952_lucile.jpg?1426555184', last_spot_id),
+                image_url: sprintf('http://www.example.com/uploads/spots/images/000/000/%03d/large/952_lucile.jpg?1426555184', last_spot_id),
                 created_at: Seeds.lucile_spot.created_at
               },
               spot_ids: Seeds.game.spot_ids
@@ -102,7 +102,7 @@ describe 'game requests' do
             user_id: Seeds.user.id,
             user_name: Seeds.user.name,
             location: {"type"=>"Point", "coordinates"=>[-118.281617, 34.086588]},
-            image_url: sprintf('http://www.example.com/uploads/spots/images/000/000/%03d/medium/952_lucile.jpg?1426555184', last_spot_id),
+            image_url: sprintf('http://www.example.com/uploads/spots/images/000/000/%03d/large/952_lucile.jpg?1426555184', last_spot_id),
             created_at: Seeds.lucile_spot.created_at
           }
         }.to_json)
