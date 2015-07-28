@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   # :registerable, :recoverable, :rememberable, 
   devise :database_authenticatable, :trackable, :validatable
   has_one :api_key
+  has_many :spots
+  has_many :guesses
 
   validates :email, uniqueness: { allow_blank: true }
   validates :name, uniqueness: { allow_blank: true},
