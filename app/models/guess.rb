@@ -61,6 +61,8 @@ class Guess < ActiveRecord::Base
   end
 
   def promote_to_spot!
-    Spot.create!(location: self.location, image: self.image, user: self.user, game: self.game)
+    Spot.transaction do
+      Spot.create!(location: self.location, image: self.image, user: self.user, game: Game.create!)
+    end
   end
 end

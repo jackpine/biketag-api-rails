@@ -38,6 +38,10 @@ def fake_file
   File.open('db/seeds/images/952_lucile.jpg')
 end
 
+def fake_user
+  User.new
+end
+
 def uuid_regex
   '\h{8}-\h{4}-\h{4}-\h{4}-\h{12}'
 end
