@@ -45,7 +45,7 @@ class Api::V1::SpotsController < Api::BaseController
   end
 
   def index
-    @spots = Spot.all
+    @spots = Spot.all.order('created_at DESC')
     respond_to do |format|
       format.json { render :index }
     end
