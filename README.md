@@ -57,11 +57,16 @@ a 'biketag-api' container running.
     28567df81604        jackpine/biketag-api:latest   "/sbin/my_init"        About a minute ago   Up About a minute   0.0.0.0:80->80/tcp, 443/tcp     biketag-api
     c27445952259        mdillon/postgis:latest        "/docker-entrypoint.   2 minutes ago        Up 2 minutes        0.0.0.0:25432->5432/tcp         biketag-db
 
+
+Take note of the port biketag-db has forwarded postgres to (25432 in
+this case).
+
 *Now that your containers have been provisioned ("run"), unless the
 containers are destroyed, you'll only need to `docker start
 <container-name>`, not `docker run <container-name>`.*
 
-You'll need to set up your database before the application will work.
+You'll need to set up your database schema before the application will
+work.
 
 ```
 me@my-laptop$ docker exec -ti biketag-api bash -l
