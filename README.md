@@ -12,136 +12,101 @@ API Errors are presents as following:
     133 - unable to save spot
     143 - unable to save guess
 
-Hacking
-=======
+Setup
+=====
+
+If you just want to run the API (and not develop it), consider using the
+BikeTag API docker containers. If you want to add features or fix bugs
+in the API, skip to the [hacking](#hacking) section.
 
 Prerequisites
+-------------
+
+Install [docker](https://www.docker.com/). The details of installing
+Docker are left as an exercise to the reader since the process changes
+and varies accross platforms.
+
+Installation
 ------------
 
-Install docker. [Installing on a mac](https://docs.docker.com/installation/mac/)
-also requires installing boot2docker.
+Start the api container
 
-#### docker
+    me@my-laptop$ config/containers/api/run.sh
 
-Install the Kitematic app mentioned in the link above.
+You can open a shell on the api container like this
 
-#### boot2docker
+    me@my-laptop$ config/containers/api/shell.sh
 
-Use homebrew.
+### Database
 
-```
-$ brew install boot2docker --without-docker
-To have launchd start boot2docker at login:
-    ln -sfv /usr/local/opt/boot2docker/*.plist ~/Library/LaunchAgents
-Then to load boot2docker now:
-    launchctl load ~/Library/LaunchAgents/homebrew.mxcl.boot2docker.plist
-```
+Start the db container like this
 
-#### Prepare
-
-```
-$ boot2docker init
-$ boot2docker up
-$ echo "export DOCKER_CERT_PATH=~/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
-export DOCKER_HOST=tcp://192.168.59.103:2376" >> ~/.bashrc
-$ boot2docker up
-```
-
-Setup
------
-
-There are two containers - an app container and a db container.
-
-Start the db container first, like this
-
-```
-me@my-laptop$ config/containers/db/run.sh
-```
+    me@my-laptop$ config/containers/db/run.sh
 
 Postgresql starts automatically when the biketag-db container is
 started. You can open a sql shell on the container like this
 
-```
-me@my-laptop$ docker exec -ti biketag-db psql --user postgres
-```
+    me@my-laptop$ config/containers/db/shell.sh
 
-Now, we're going to start the api container. If you just want to stand
-up the server to talk to the app, run the regular api container.
+Check your work with `docker ps`. You should see both a 'biketag-db' and
+a 'biketag-api' container running.
 
-```
-me@my-laptop$ config/containers/api/run.sh
-```
-
-However, if you are going to be developing the api, run the api-dev container
-instead.
-
-```
-me@my-laptop$ config/containers/api-dev/run.sh
-```
-
-BEGINHACK
-
-On the api-dev container, to get file permssions correct, you'll
-have to change the uid of the app user to correspond to your local users
-id.
-
-```
-me@my-laptop$ docker exec -ti biketag-api-dev bash -l
-root@api-container$ ls -l /home/app/biketag-api
-# see what UID owns these files. Should be the same as the uid for me@my-laptop
-# change the UID of the app user to correspond to the files owner
-root@api-container$ vim /etc/passwd
-```
-ENDHACK
-
-You should see both a 'biketag-db' and a 'biketag-api' (or 'biketag-api-dev') container running.
-
-```
-me@my-laptop$ docker ps
-CONTAINER ID        IMAGE                         COMMAND                CREATED              STATUS              PORTS                           NAMES
-c33980290eda        jackpine/biketag-api:latest   "/sbin/my_init"        32 seconds ago       Up 31 seconds       443/tcp, 0.0.0.0:3000->80/tcp   biketag-api-dev
-28567df81604        jackpine/biketag-api:latest   "/sbin/my_init"        About a minute ago   Up About a minute   0.0.0.0:80->80/tcp, 443/tcp     biketag-api
-c27445952259        mdillon/postgis:latest        "/docker-entrypoint.   2 minutes ago        Up 2 minutes        0.0.0.0:25432->5432/tcp         biketag-db
-```
+    me@my-laptop$ docker ps
+    CONTAINER ID        IMAGE                         COMMAND                CREATED              STATUS              PORTS                           NAMES
+    c33980290eda        jackpine/biketag-api:latest   "/sbin/my_init"        32 seconds ago       Up 31 seconds       443/tcp, 0.0.0.0:3000->80/tcp   biketag-api-dev
+    28567df81604        jackpine/biketag-api:latest   "/sbin/my_init"        About a minute ago   Up About a minute   0.0.0.0:80->80/tcp, 443/tcp     biketag-api
+    c27445952259        mdillon/postgis:latest        "/docker-entrypoint.   2 minutes ago        Up 2 minutes        0.0.0.0:25432->5432/tcp         biketag-db
 
 *Now that your containers have been provisioned ("run"), unless the
-containers are destroyed, you'll only need to `docker start <container>`, 
-not `docker run <container>`.*
+containers are destroyed, you'll only need to `docker start
+<container-name>`, not `docker run <container-name>`.*
 
 You'll need to set up your database before the application will work.
 
 ```
-me@my-laptop$ docker exec -ti biketag-api bash -l  (or biketag-api-dev if you're developing)
+me@my-laptop$ docker exec -ti biketag-api bash -l
 root@api-container$ su - app
 app@api-container$ cd ~/biketag-api
-app@api-container$ RAILS_ENV=production bin/rake db:setup (omit the RAILS_ENV if you're using biketag-api-dev)
+app@api-container$ RAILS_ENV=production bin/rake db:setup
 ```
 
 At this point you should be good to go. Verify that you are able to hit
 the api server from your local machine.
 
-```
-me@my-laptop$ curl $(boot2docker ip)/api/v1/games/1/current_spot.json
-```
-
-Or if you're in development
-
-```
-me@my-laptop$ curl $(boot2docker ip):3000/api/v1/games/1/current_spot.json
-```
+  me@my-laptop$ curl $(boot2docker ip)/api/v1/games/1/current_spot.json
 
 Debugging
 ---------
 
 To open a shell on the api container
 
-```
-me@my-laptop$ docker exec -ti biketag-api bash -l
-```
+   me@my-laptop$ docker exec -ti biketag-api bash -l
 
 If the application cannot start, check `/var/log/nginx/`
 If the application does start, check `~app/biketag-api/logs/`
+
+Hacking
+=======
+
+Prerequisites
+-------------
+
+Install docker and rbenv.
+
+To develop the api, first provision the database container as mentioned
+in [Database Setup](#database).
+
+Install the proper ruby version and ruby gems
+
+    me@my-laptop:biketag-api$ rbenv install
+    me@my-laptop:biketag-api$ gem install bundler
+    me@my-laptop:biketag-api$ bundle
+    me@my-laptop:biketag-api$ bin/rake db:setup
+
+At this point you should be good to go. Verify that you are able to hit
+the api server from your local machine.
+
+  me@my-laptop$ curl localhost:3000/api/v1/games/1/current_spot.json
 
 Deployment
 ==========
