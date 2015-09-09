@@ -14,13 +14,16 @@ class Api::V1::GamesController < Api::BaseController
 
     if params[:filter] && params[:filter][:location]
       location = RGeo::GeoJSON.decode(params[:filter][:location])
-      # assign default location (LA City Hall) if one couldn't be found in the params.
-      if location.nil?
-        location = RGeo::GeoJSON.decode('{"type":"Point","coordinates":[34.0546605969165, -118.2439080254345]}')
-      end
     end
 
-    @spots = Spot.current.near(location).limit(20)
+    # assign default location (LA City Hall) if one couldn't be deciphered from the params.
+    if location.nil?
+      location = RGeo::GeoJSON.decode({ 'type' => 'Point', 'coordinates' => [-118.2439080254345, 34.0546605969165] })
+    end
+
+    limit = params[:limit] || 20
+
+    @spots = Spot.current.near(location).limit(limit)
 
     respond_to do |format|
       format.json
