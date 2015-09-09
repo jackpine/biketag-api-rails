@@ -8,15 +8,19 @@ class Api::V1::GamesController < Api::BaseController
     end
   end
 
-  def current_spots
-    @spots = Spot.current(limit: 20)
 
-    #sort by location if available
+  # get current spots closest to location
+  def current_spots
+
     if params[:filter] && params[:filter][:location]
       location = RGeo::GeoJSON.decode(params[:filter][:location])
-      spot_ids = @spots.map &:id
-      @spots = Spot.near(location).where(id: spot_ids)
+      # assign default location (LA City Hall) if one couldn't be found in the params.
+      if location.nil?
+        location = RGeo::GeoJSON.decode('{"type":"Point","coordinates":[34.0546605969165, -118.2439080254345]}')
+      end
     end
+
+    @spots = Spot.current_and_near(location).limit(20)
 
     respond_to do |format|
       format.json

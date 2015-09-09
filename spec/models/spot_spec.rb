@@ -58,4 +58,33 @@ describe Spot do
       end
     end
   end
+
+  describe '.current_and_near' do
+    let(:my_location) { RGeo::GeoJSON.decode({ 'type' => 'Point', 'coordinates' => [118.0, 34.0] }) }
+    let(:nearby) { { 'type' => 'Point', 'coordinates' => [118.1, 34.1] } }
+    let(:far_away) { { 'type' => 'Point', 'coordinates' => [18.0, 4.0] } }
+    let(:some_location) { far_away }
+
+    let!(:close_spot) { FactoryGirl.create(:spot, location: nearby) }
+    let!(:previous_spot) { FactoryGirl.create(:spot, location: some_location, game: close_spot.game) }
+    let!(:far_spot) { FactoryGirl.create(:spot, location: far_away) }
+
+    it 'returns the latest spots for each game ordered by distance' do
+      expect(Spot.current_and_near(my_location)).to eq([close_spot, far_spot])
+    end
+
+    context 'with a limit' do
+      let!(:close_old_spot) { FactoryGirl.create(:spot, location: nearby, created_at: 5.days.ago) }
+      let!(:close_new_spot) { FactoryGirl.create(:spot, location: nearby) }
+      let!(:far_new_spot) { FactoryGirl.create(:spot, location: far_away) }
+
+      it 'includes only the closest spots' do
+        spots = Spot.current_and_near(my_location).limit(2)
+        expect(spots.length).to eq(2)
+        expect(spots).to include(close_new_spot)
+        expect(spots).to include(close_old_spot)
+        expect(spots).not_to include(far_new_spot)
+      end
+    end
+  end
 end
