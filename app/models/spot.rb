@@ -23,13 +23,9 @@ class Spot < ActiveRecord::Base
     order("ST_Distance(location, ST_GeomFromText('#{point.as_text}', 4326))")
   end
 
-  def self.current_and_near(point)
-    near(point)
-  end
-
-  def self.current(options = {limit: 20})
-    limit = options[:limit]
-    find_by_sql(['SELECT DISTINCT ON (spots.game_id) spots.* FROM spots ORDER BY spots.game_id, spots.id DESC LIMIT ?', limit])
+  def self.current
+    current_spot_ids = group("game_id").maximum("id").values
+    where(id: current_spot_ids)
   end
 
   def distance_from_last_spot

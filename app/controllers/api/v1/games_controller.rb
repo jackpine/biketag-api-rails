@@ -20,7 +20,7 @@ class Api::V1::GamesController < Api::BaseController
       end
     end
 
-    @spots = Spot.current_and_near(location).limit(20)
+    @spots = Spot.current.near(location).limit(20)
 
     respond_to do |format|
       format.json
