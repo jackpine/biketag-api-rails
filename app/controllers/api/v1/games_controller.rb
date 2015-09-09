@@ -23,7 +23,7 @@ class Api::V1::GamesController < Api::BaseController
 
     limit = params[:limit] || 20
 
-    @spots = Spot.current.near(location).limit(limit)
+    @spots = Spot.current.near(location).limit(limit).includes(:guesses, :user, :game)
 
     respond_to do |format|
       format.json
