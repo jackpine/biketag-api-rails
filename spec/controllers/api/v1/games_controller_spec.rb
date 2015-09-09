@@ -21,8 +21,6 @@ describe Api::V1::GamesController do
 
     context 'without specifying location' do
       it 'returns some spots' do
-        expect(Spot).not_to receive(:near)
-
         get :current_spots, { format: 'json' }
 
         expect(response).to be_success
