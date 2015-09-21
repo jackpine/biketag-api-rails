@@ -45,7 +45,11 @@ class Api::V1::SpotsController < Api::BaseController
   end
 
   def index
-    @spots = Spot.all.order('created_at DESC')
+    @spots = Spot.all.order('created_at DESC').includes(:guesses, :user, :game)
+    @games = @spots.map &:game
+    @users = @spots.map &:user
+    @guesses = @spots.map { |spot| spot.guesses }.flatten
+
     respond_to do |format|
       format.json { render :index }
     end
