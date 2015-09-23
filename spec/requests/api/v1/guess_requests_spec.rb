@@ -38,9 +38,10 @@ describe 'guess requests' do
           expect(actual_image_url_without_query_parameters).to match(expected_image_url_without_query_parameters)
         end
         it 'updates the users score' do
-          expect(Seeds.user.score).to eq(10)
+          expect(Seeds.user.score).to eq(0)
           post '/api/v1/guesses', guess_params, Seeds.authorization_headers
-          expect(Seeds.user.score).to eq(20)
+          Seeds.user.reload
+          expect(Seeds.user.score).to eq(10)
         end
       end
 

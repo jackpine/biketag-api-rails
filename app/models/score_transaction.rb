@@ -11,8 +11,8 @@ class ScoreTransaction < ActiveRecord::Base
     CORRECT_GUESS = 10
   end
 
-  def self.create_for_guess(guess, user)
+  def self.create_for_guess(guess)
     description = "Correctly guessed #{guess.spot.user.name}'s spot (spot: #{guess.spot.id}, guess: #{guess.id})"
-    self.create(user: user, amount: ScoreAmounts::CORRECT_GUESS, description: description)
+    self.create!(user: guess.user, amount: ScoreAmounts::CORRECT_GUESS, description: description)
   end
 end
