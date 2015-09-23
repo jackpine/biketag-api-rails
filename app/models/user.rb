@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_one :api_key
   has_many :spots
   has_many :guesses
+  has_many :score_transactions
 
   validates :email, uniqueness: { allow_blank: true }
   validates :name, uniqueness: { allow_blank: true},
@@ -24,5 +25,9 @@ class User < ActiveRecord::Base
 
   def name
     self[:name] || "User ##{id}"
+  end
+
+  def compute_score
+    update_attribute(:score, score_transactions.sum(:amount))
   end
 end

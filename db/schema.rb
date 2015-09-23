@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716204934) do
+ActiveRecord::Schema.define(version: 20150923164547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 20150716204934) do
   add_index "guesses", ["spot_id"], name: "index_guesses_on_spot_id", using: :btree
   add_index "guesses", ["user_id"], name: "index_guesses_on_user_id", using: :btree
 
+  create_table "score_transactions", force: :cascade do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "amount",      null: false
+    t.string   "description", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "score_transactions", ["user_id"], name: "index_score_transactions_on_user_id", using: :btree
+
   create_table "spots", force: :cascade do |t|
     t.geometry "location",           limit: {:srid=>4326, :type=>"point"}, null: false
     t.string   "image_file_name",                                          null: false
@@ -82,6 +92,7 @@ ActiveRecord::Schema.define(version: 20150716204934) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.integer  "score",                  default: 0,  null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
