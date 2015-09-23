@@ -39,7 +39,10 @@ class Guess < ActiveRecord::Base
 
   def complete_guess
     if save
-      ScoreTransaction.create_for_guess(self)
+      if correct
+        ScoreTransaction.create_for_guess(self)
+      end
+      true
     else
       false
     end
