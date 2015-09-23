@@ -11,7 +11,7 @@ class Seeds
   class_attribute :lucile_spot, :user, :game
 
   def self.seed!
-    self.user = User.create!
+    self.user = User.create!(name: "First User")
     self.user.create_api_key!
 
     self.game = Game.create!
