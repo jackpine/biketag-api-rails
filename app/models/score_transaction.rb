@@ -2,6 +2,7 @@ class ScoreTransaction < ActiveRecord::Base
 
   belongs_to :user
   validates_presence_of  :user, :amount, :description
+  validate :user_can_afford
 
   after_save do
     self.user.compute_score
@@ -14,6 +15,7 @@ class ScoreTransaction < ActiveRecord::Base
   module ScoreAmounts
     CORRECT_GUESS = 10
     NEW_USER = 50
+    NEW_GAME = -25
   end
 
   def self.credit_for_correct_guess(guess)
@@ -24,5 +26,16 @@ class ScoreTransaction < ActiveRecord::Base
   def self.credit_for_new_user(user)
     description = 'Initial points'
     self.create!(user: user, amount: ScoreAmounts::NEW_USER, description: description)
+  end
+
+  def self.debit_for_new_game(spot)
+    description = "Started new game with spot: #{spot.id}"
+    self.create!(user: spot.user, amount: ScoreAmounts::NEW_GAME, description: description)
+  end
+
+  def user_can_afford
+    if (user.score + amount) < 0
+      errors.add(:amount, "is more than user has")
+    end
   end
 end
