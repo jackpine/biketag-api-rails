@@ -64,4 +64,13 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe '#create_for_game' do
+    it 'sets up a user to play' do
+      user = User.create_for_game!
+      expect(user.api_key).to be_a(ApiKey)
+      expect(user.score_transactions).to_not be_empty
+      expect(user.score).to eq(50)
+    end
+  end
 end
