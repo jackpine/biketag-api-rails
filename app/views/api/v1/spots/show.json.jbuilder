@@ -3,5 +3,5 @@ json.spot do
 end
 
 json.guesses do
-  json.array! @spot.guesses, partial: 'guess', as: :guess
+  json.array! @spot.guesses, partial: 'api/v1/guesses/guess', as: :guess
 end
