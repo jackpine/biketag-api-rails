@@ -52,15 +52,15 @@ RSpec.describe User, type: :model do
   describe '#compute_score' do
     context 'with some score transactions' do
       let(:user) { FactoryGirl.create(:user) }
-      before do
-        FactoryGirl.create(:score_transaction, user: user, amount: 11)
-        FactoryGirl.create(:score_transaction, user: user, amount: 4)
-      end
+      let!(:first_score) { FactoryGirl.create(:score_transaction, user: user, amount: 11) }
+      let!(:second_score) { FactoryGirl.create(:score_transaction, user: user, amount: 4) }
 
       it 'should compute the score' do
         user.update_attribute(:score, 0)
         user.compute_score
         expect(user.score).to eq(15)
+        first_score.destroy
+        expect(user.score).to eq(4)
       end
     end
   end
