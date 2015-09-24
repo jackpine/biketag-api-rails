@@ -52,17 +52,17 @@ class Spot < ActiveRecord::Base
   end
 
   def submit_new_spot
+    self.game ||= Game.new
+
+    return false unless valid?
+
     Spot.transaction do
-      # if starting a new game
-      if game.nil?
-        self.game = Game.create!
-        save!
+      if game.new_record?
         ScoreTransaction.debit_for_new_game(self)
-      else
-        save!
       end
-      true
+      save!
     end
+    true
   end
 
 end

@@ -34,6 +34,8 @@ class ScoreTransaction < ActiveRecord::Base
   end
 
   def user_can_afford
+    return unless user && amount.kind_of?(Numeric)
+
     if (user.score + amount) < 0
       errors.add(:amount, "is more than user has")
     end
