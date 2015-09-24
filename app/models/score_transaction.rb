@@ -7,6 +7,10 @@ class ScoreTransaction < ActiveRecord::Base
     self.user.compute_score
   end
 
+  after_destroy do
+    self.user.compute_score
+  end
+
   module ScoreAmounts
     CORRECT_GUESS = 10
     NEW_USER = 50
