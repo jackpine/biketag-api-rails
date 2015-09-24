@@ -37,6 +37,12 @@ describe 'guess requests' do
           expected_image_url_without_query_parameters = expected_image_url.split("?")[0]
           expect(actual_image_url_without_query_parameters).to match(expected_image_url_without_query_parameters)
         end
+        it 'adds to the users score' do
+          expect(Seeds.user.score).to eq(0)
+          post '/api/v1/guesses', guess_params, Seeds.authorization_headers
+          Seeds.user.reload
+          expect(Seeds.user.score).to eq(10)
+        end
       end
 
       context 'with an incorrect guess' do
@@ -58,6 +64,13 @@ describe 'guess requests' do
 
           actual_response = JSON.parse(response.body)
           expect(actual_response['guess']['correct']).to eq(false)
+        end
+
+        it 'does not add to the users score' do
+          expect(Seeds.user.score).to eq(0)
+          post '/api/v1/guesses', guess_params, Seeds.authorization_headers
+          Seeds.user.reload
+          expect(Seeds.user.score).to eq(0)
         end
       end
     end

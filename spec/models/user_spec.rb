@@ -33,7 +33,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe 'name' do
+  describe '#name' do
     let(:user) { User.new(name: user_name).tap { |u| u.id = 2 } }
     context 'without a name set' do
       let(:user_name) { nil }
@@ -45,6 +45,22 @@ RSpec.describe User, type: :model do
       let(:user_name) { 'Juan' }
       it 'uses the specified name' do
         expect(user.name).to eq('Juan')
+      end
+    end
+  end
+
+  describe '#compute_score' do
+    context 'with some score transactions' do
+      let(:user) { FactoryGirl.create(:user) }
+      before do
+        FactoryGirl.create(:score_transaction, user: user, amount: 11)
+        FactoryGirl.create(:score_transaction, user: user, amount: 4)
+      end
+
+      it 'should compute the score' do
+        user.update_attribute(:score, 0)
+        user.compute_score
+        expect(user.score).to eq(15)
       end
     end
   end

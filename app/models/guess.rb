@@ -37,6 +37,17 @@ class Guess < ActiveRecord::Base
     true
   end
 
+  def complete_guess
+    if save
+      if correct
+        ScoreTransaction.create_for_guess(self)
+      end
+      true
+    else
+      false
+    end
+  end
+
   def close_enough?
     # This distance was generated experimentally. It's about 250 feet (75 meters).
     # I have no idea what unit this measurement could possibly be in.
