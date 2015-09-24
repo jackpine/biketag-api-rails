@@ -30,4 +30,14 @@ class User < ActiveRecord::Base
   def compute_score
     update_attribute(:score, score_transactions.sum(:amount))
   end
+
+  def self.create_for_game!(attributes  = {})
+    user = nil
+    ActiveRecord::Base.transaction do
+      user = create!(attributes)
+      user.create_api_key!
+      ScoreTransaction.credit_for_new_user(user)
+    end
+    user
+  end
 end
