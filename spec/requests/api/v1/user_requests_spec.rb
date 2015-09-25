@@ -18,7 +18,7 @@ describe 'user requests' do
           user: {
             id: user_id,
             name: 'First User',
-            score: 0
+            score: 50
           }
         }.to_json)
 
