@@ -29,7 +29,7 @@ class Spot < ActiveRecord::Base
   end
 
   def distance_from_last_spot
-    return nil if self.game.spots.empty?
+    return nil if self.game.nil? || self.game.spots.empty?
 
     self[:location].distance(self.game.spots.last[:location])
   end
@@ -49,6 +49,20 @@ class Spot < ActiveRecord::Base
 
   def self.generate_image_filename
     SecureRandom.uuid + '.jpg'
+  end
+
+  def submit_new_spot
+    self.game ||= Game.new
+
+    return false unless valid?
+
+    Spot.transaction do
+      if game.new_record?
+        ScoreTransaction.debit_for_new_game(self)
+      end
+      save!
+    end
+    true
   end
 
 end

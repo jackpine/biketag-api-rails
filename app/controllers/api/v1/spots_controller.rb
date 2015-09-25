@@ -36,7 +36,7 @@ class Api::V1::SpotsController < Api::BaseController
     end
 
     respond_to do |format|
-      if @spot.save
+      if @spot.submit_new_spot
         format.json { render action: 'show', status: :created, location: api_v1_spot_path(@spot, format: :json) }
       else
         format.json { render json: { error: { code: 133, message: @spot.errors.full_messages.join(',') }}, status: :unprocessable_entity }

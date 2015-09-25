@@ -38,10 +38,9 @@ describe 'guess requests' do
           expect(actual_image_url_without_query_parameters).to match(expected_image_url_without_query_parameters)
         end
         it 'adds to the users score' do
-          expect(Seeds.user.score).to eq(0)
-          post '/api/v1/guesses', guess_params, Seeds.authorization_headers
-          Seeds.user.reload
-          expect(Seeds.user.score).to eq(10)
+          expect {
+            post '/api/v1/guesses', guess_params, Seeds.authorization_headers
+          }.to change { Seeds.user.reload.score }.by(10)
         end
       end
 
@@ -67,10 +66,9 @@ describe 'guess requests' do
         end
 
         it 'does not add to the users score' do
-          expect(Seeds.user.score).to eq(0)
-          post '/api/v1/guesses', guess_params, Seeds.authorization_headers
-          Seeds.user.reload
-          expect(Seeds.user.score).to eq(0)
+          expect {
+            post '/api/v1/guesses', guess_params, Seeds.authorization_headers
+          }.not_to change { Seeds.user.reload.score }
         end
       end
     end
