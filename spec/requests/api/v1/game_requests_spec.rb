@@ -55,17 +55,7 @@ describe 'game requests' do
           games: [
             { id: Seeds.game.id,
               name: Seeds.game.name,
-              current_spot: {
-                game_id: Seeds.game.id,
-                guess_ids: [],
-                id: last_spot_id,
-                url: "http://www.example.com/api/v1/spots/#{last_spot_id}",
-                user_id: Seeds.user.id,
-                user_name: Seeds.user.name,
-                location: {"type"=>"Point", "coordinates"=>[-118.281617, 34.086588]},
-                image_url: sprintf('http://www.example.com/uploads/spots/images/000/000/%03d/large/952_lucile.jpg?1426555184', last_spot_id),
-                created_at: Seeds.lucile_spot.created_at
-              },
+              current_spot_id: last_spot_id,
               spot_ids: Seeds.game.spot_ids
             }
           ]
@@ -74,15 +64,7 @@ describe 'game requests' do
         expect(actual_response).to be_a(Hash)
         expect(actual_response).to have_key("games")
         expect(actual_response["games"]).to be_an(Array)
-
-        # Image URL has to be checked separately
-        expected_image_url = expected_response['games'][0]['current_spot'].delete('image_url')
-        actual_image_url = actual_response['games'][0]['current_spot'].delete('image_url')
-        expect(actual_response).to eq(expected_response)
-
-        actual_image_url_without_query_parameters = actual_image_url.split("?")[0]
-        expected_image_url_without_query_parameters = expected_image_url.split("?")[0]
-        expect(actual_image_url_without_query_parameters).to match(expected_image_url_without_query_parameters)
+        expect(actual_response["games"]).to eq(expected_response["games"])
       end
     end
 

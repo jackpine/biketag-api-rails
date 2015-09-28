@@ -6,6 +6,14 @@ class Game < ActiveRecord::Base
     spots.last
   end
 
+  def current_spot_id
+    if current_spot
+      current_spot.id
+    else
+      nil
+    end
+  end
+
   def name
     "Game #{id}"
   end

@@ -31,7 +31,8 @@ class Api::V1::GamesController < Api::BaseController
   end
 
   def index
-    @games = Game.all
+    @games = Game.all.includes(:spots)
+    @spots = @games.map &:current_spot
     respond_to do |format|
       format.json
     end
