@@ -3,9 +3,10 @@ class Api::V1::ApiKeysController < Api::BaseController
 
   def create
     user = User.create_for_game!
+    @api_key = user.api_key
 
     respond_to do |format|
-      format.json { render json: { api_key: user.api_key } }
+      format.json { render action: 'show', status: :created }
     end
   end
 
