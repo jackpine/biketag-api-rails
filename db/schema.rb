@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20150923164547) do
   add_foreign_key "api_keys", "users"
   add_foreign_key "guesses", "spots"
   add_foreign_key "guesses", "users"
+  add_foreign_key "score_transactions", "users"
   add_foreign_key "spots", "games"
   add_foreign_key "spots", "users"
 end
