@@ -3,7 +3,7 @@ class Game < ActiveRecord::Base
   has_many :guesses, through: :spots
 
   def current_spot
-    spots.last
+    spots.order(:created_at).last
   end
 
   def current_spot_id
