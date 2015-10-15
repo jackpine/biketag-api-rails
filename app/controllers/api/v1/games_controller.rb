@@ -31,8 +31,9 @@ class Api::V1::GamesController < Api::BaseController
   end
 
   def index
-    @games = Game.all.includes(spots: :user, guesses: :user)
+    @games = Game.all.includes(spots: [:user, :game], guesses: [:user, :game])
     @spots = (@games.map &:spots).flatten
+    @guesses = (@games.map &:guesses).flatten
     respond_to do |format|
       format.json
     end
@@ -40,6 +41,8 @@ class Api::V1::GamesController < Api::BaseController
 
   def show
     @game = Game.find(params[:id])
+    @spots = @game.spots.includes(:user, guesses: :user)
+    @guesses = @game.guesses.includes(:user, :game,  spot: :user)
     respond_to do |format|
       format.json
     end
