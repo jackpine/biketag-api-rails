@@ -55,6 +55,7 @@ describe 'game requests' do
           games: [
             { id: Seeds.game.id,
               name: Seeds.game.name,
+              created_at: Seeds.game.created_at,
               current_spot_id: last_spot_id,
               spot_ids: Seeds.game.spot_ids
             }
