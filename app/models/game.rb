@@ -1,6 +1,6 @@
 class Game < ActiveRecord::Base
   has_many :spots
-  has_many :guesses
+  has_many :guesses, through: :spots
 
   def current_spot
     spots.last

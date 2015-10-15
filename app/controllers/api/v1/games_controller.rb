@@ -31,7 +31,7 @@ class Api::V1::GamesController < Api::BaseController
   end
 
   def index
-    @games = Game.all.includes(:spots)
+    @games = Game.all.includes(:spots, :guesses)
     @spots = (@games.map &:spots).flatten
     respond_to do |format|
       format.json
