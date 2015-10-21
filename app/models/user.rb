@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
   validates :name, uniqueness: { allow_blank: true},
                    length: { in: 4..16, allow_blank: true }
 
+  include RoleModel
+  roles :admin
+
   # We allow users to identify using their device id
   def email_required?
     false

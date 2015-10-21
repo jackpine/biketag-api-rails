@@ -52,6 +52,30 @@ describe 'user requests' do
         expect(actual_response).to eq(expected_response)
       end
     end
+
+    describe 'PUT /api/v1/users/1' do
+      it 'should update the existing user' do
+        update_params = {
+          user: {
+            name: 'My New Username'
+          }
+        }
+        put "/api/v1/users/#{first_user.id}.json", update_params, Seeds.authorization_headers
+        expect(response).to be_success
+
+        actual_response = JSON.parse(response.body)
+        expected_response = JSON.parse({
+          user: {
+            id: first_user.id,
+            name: 'My New Username',
+            created_at: first_user.created_at,
+            score: 50
+          }
+        }.to_json)
+
+        expect(actual_response).to eq(expected_response)
+      end
+    end
   end
 end
 
