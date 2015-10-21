@@ -3,14 +3,12 @@ API Docs
 
 Errors
 ------
-API Errors are presents as following:
+API Errors are presented as:
+
     { "error": { "message": "some descriptive message string", "code": 123 }}
 
-### Codes
-
-    32  - could not authenticate you
-    133 - unable to save spot
-    143 - unable to save guess
+See [Api::Error](models/api/error.rb) for the specific errors and their
+codes.
 
 Setup
 =====

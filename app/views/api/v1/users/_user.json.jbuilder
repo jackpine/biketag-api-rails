@@ -1,1 +1,1 @@
-json.extract! user, :id, :score, :name
+json.extract! user, :id, :score, :name, :created_at

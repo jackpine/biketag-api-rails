@@ -11,7 +11,7 @@ class Seeds
   class_attribute :lucile_spot, :user, :game
 
   def self.seed!
-    self.user = User.create_for_game!(name: "First User")
+    self.user = User.create_for_game!(name: "First User", roles: :admin)
 
     self.game = Game.create!
     self.lucile_spot = Spot.new(location: { type: "Point",
@@ -23,11 +23,9 @@ class Seeds
       lucile_spot.image = lucile_image
       lucile_spot.save!
     end
-
   end
 
   def self.authorization_headers
     { HTTP_AUTHORIZATION: ActionController::HttpAuthentication::Token.encode_credentials(self.user.api_key.client_id) }
   end
-
 end

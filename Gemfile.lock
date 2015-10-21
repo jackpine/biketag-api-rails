@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/jackpine/rack-permissive-cors.git
-  revision: 73c880962ed57602aca4ccbcdbf1673d91e74c66
+  revision: 8221b7af2a8790f2cca82def14cd98c227d107fd
   specs:
     rack-permissive-cors (0.1.0)
 
@@ -56,6 +56,7 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
+    cancancan (1.13.1)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.7)
@@ -308,6 +309,7 @@ GEM
       rgeo (~> 0.3)
     rgeo-geojson (0.3.1)
       rgeo (~> 0.3)
+    role_model (0.8.2)
     rspec (3.3.0)
       rspec-core (~> 3.3.0)
       rspec-expectations (~> 3.3.0)
@@ -381,6 +383,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-postgis-adapter (= 3.0.0.beta2)
   aws-sdk (< 2.0)
+  cancancan
   coffee-rails (~> 4.1.0)
   database_cleaner
   devise
@@ -397,6 +400,7 @@ DEPENDENCIES
   rack-permissive-cors!
   rails (= 4.2.0)
   rgeo-geojson
+  role_model
   rspec-activemodel-mocks
   rspec-rails
   sass-rails (~> 5.0)

@@ -10,9 +10,14 @@ class Api::BaseController < ApplicationController
 
   def authenticate_user_from_token!
     unless authenticated_from_token?
-      render json: { error: { message: "Could not authenticate you", code: 32 } },
+      render json: Api::Error::Unauthenticated.new,
              status: 401
     end
+  end
+
+  rescue_from CanCan::AccessDenied do |exception|
+    render json: Api::Error::Unauthorized.new,
+           status: 403
   end
 
   # These are made by some HTTP Clients wrt CORS. In particular, Ember will make
