@@ -13,7 +13,7 @@ class Api::V1::UsersController < Api::BaseController
     if @user.update_attributes(user_params)
       render action: :show
     else
-      render json: { error: { code: 133, message: @user.errors.full_messages.join(',') }},
+      render json: Api::Error::InvalidRecord.new( @user.errors.full_messages.join(',') ),
              status: :unprocessable_entity
     end
   end

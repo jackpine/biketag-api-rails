@@ -56,7 +56,7 @@ class Guess < ActiveRecord::Base
   end
 
   def distance
-    raise RuntimeError.new("attempting to compare to non-existant spot") unless spot.present?
+    raise RuntimeError.new("attempting to compare to non-existent spot") unless spot.present?
     raise RuntimeError.new("attempting to compare to empty location") unless spot.location.present? && self.location.present?
 
     self[:location].distance(spot[:location])
