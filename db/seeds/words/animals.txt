@@ -1,0 +1,472 @@
+Aardvark
+Addax
+Adelie Penguin
+African Elephant
+African Forest Elephant
+African Lions
+African Penguin
+African Spurred Tortoise
+African Wild Dog
+Africanized Bees
+Allen’s Swamp Monkeys
+Alligator
+Allis Shad
+Alpine Ibex
+Amazonian Manatee
+American Oystercatcher Bird
+Anaconda Snake
+Ants
+Aquatic Warbler
+Arctic Wolf
+Armadillo
+Asian Elephant
+Asian Lion
+Atlantic Puffin
+Atlantic Spotted Dolphins
+Atlas Beetle
+Audubon’s Shearwater
+Australasian Grebe
+Australian Pelican
+Australian Swiftlet
+Bactrian Camels
+Badger
+Bean Goose
+Bees
+Beetle
+Bengal Tigers
+Big Eyed Squirrel Fish
+Bison
+Black Caimans
+Black House Spider
+Black Mamba Snakes
+Black Necked Stilt
+Black Rhinoceros
+Black Widow Spider
+Blacktip Reef Shark
+Blacktip Shark
+Blister Beetle
+Blue and Yellow Macaw
+Blue Whale
+Blue-footed Booby Bird
+Boa Constrictor Snake
+Bottlenose Dolphins
+Bowhead Whale
+Brandling Worms
+Brazilian Wandering Spider
+British Mice
+British Moles
+British Water Vole
+British Wild Cats
+Broad-Snouted Caimans
+Brown Recluse Spider
+Brown Trout
+Bumble Bees
+Burying Beetle
+Butterflies
+Camels
+Campbell’s Dwarf Hamster
+Cape Gannet Bird
+Capercaillie
+Capuchin Monkeys
+Capybara
+Caracal
+Cardinal Birds
+Caribbean Reef Shark
+Caribou
+Cats
+Centipede
+Cheetah
+Chickaree
+Chickens
+Chimpanzee
+Chinchilla
+Chinese Hamsters
+Chinstrap Penguin
+Chipmunk
+Christmas Beetle
+Cicada Killer Wasps
+Click Beetle
+Commerson Dolphin
+Common Buzzard
+Common Dolphin
+Common Frog
+Common Hippopotamus
+Common Kingfisher
+Common Lizard
+Common Newt
+Common Palm Civet
+Common Seal
+Common Toad
+Common Wasps
+Copperhead Snakes
+Corncrake
+Cottonmouth Snakes
+Cows
+Coyote
+Crab Plover
+Crabs
+Crocodile
+Cuban Solenodon
+Cuviers Dwarf Caimans
+Darkling Beetle
+De Brazza’s Monkeys
+Deer
+Dingo
+Dog
+Dolphins
+Domestic Pig
+Dragonfly
+Dromedary Camels
+Duck-billed Platypus
+Ducks
+Dung Beetle
+Earthworms
+Eastern Lowland Gorillas
+Eastern Wolf
+Elephant Seal
+Elephants
+Elk
+Emperor Penguin
+Emu
+Erect-Crested Penguin
+Ethiopian Wolf
+Eurasian Water Shrew
+Eurasian Wolf
+Eurasian Wryneck
+European Hare
+European Otter
+False Black Widow Spider
+Fennec Fox
+Field Vole
+Fiji Blue Devil Damsel Fish
+Fiordland Crested Penguin
+Flatworms
+Fungus Beetle
+Funnel Web Spider
+Galapagos Barn Owls
+Galapagos Black Tipped Shark
+Galapagos Brown Noddy Tern
+Galapagos Brown Pelican Birds
+Galapagos Brydes Whale
+Galapagos Dark Billed Cuckoo
+Galapagos Dove
+Galapagos Eels
+Galapagos Fin Whales
+Galapagos Finches
+Galapagos Flamingo
+Galapagos Flightless Cormorant Sea Bird
+Galapagos Flycatcher Bird
+Galapagos Fur Seals
+Galapagos Gecko
+Galapagos Giant Tortoise
+Galapagos Great Blue Heron Bird
+Galapagos Great Frigate Bird
+Galapagos Green Sea Turtle
+Galapagos Hammerhead Shark
+Galapagos Hawk
+Galapagos Hoary Bat
+Galapagos Humpback Whale
+Galapagos Killer Whale
+Galapagos Land Iguana
+Galapagos Lava Gull Bird
+Galapagos Lava Heron Bird
+Galapagos Lava Lizard
+Galapagos Marine Iguana
+Galapagos Masked Booby Bird
+Galapagos Minke Whale
+Galapagos Mockingbird
+Galapagos Nazca Booby Bird
+Galapagos Penguin
+Galapagos Rail Bird
+Galapagos Rays
+Galapagos Red Bat
+Galapagos Red Billed Tropic Bird
+Galapagos Red Footed Booby Bird
+Galapagos Rice Rat
+Galapagos Sea Lions
+Galapagos Short Eared Owl
+Galapagos Short Finned Pilot Whale
+Galapagos Silky Shark
+Galapagos Smooth Billed Ani Bird
+Galapagos Snakes
+Galapagos Sperm Whale
+Galapagos Storm Petrel Bird
+Galapagos Swallow Tailed Gull
+Galapagos Waved Albatross
+Galapagos Whale Shark
+Galapagos Whimbrel Birds
+Galapagos White Cheeked Pintail Duck
+Galapagos White Tipped Reef Shark
+Galapagos Willet Bird
+Galapagos Yellow Warbler Bird
+Galapagos Yellow-Crowned Night Heron
+Gemsbok
+Gentoo Penguin
+Gerenuk
+Gharial
+Giant Anteater
+Giant Panda Bear
+Giant Sable Antelope
+Giraffe
+Goats
+Gold, Silver and Blue Monkeys
+Golden Eagle
+Golden Pheasant
+Gorillas
+Grasshopper
+Great Bittern
+Great Crested Newt
+Great Green Macaw
+Great White African Pelican Birds
+Great White Shark
+Greater Flamingo
+Greater Horseshoe Bat
+Greater Mouse-Eared Bat
+Greater Spot-Nosed Monkeys
+Green Crabs
+Green Scarab Beetle
+Grevy’s Zebra
+Grey Jungle Fowl Bird
+Grey Loerie bird
+Grey Partridge
+Grey Seal
+Grey Wolf
+Grivet Monkeys
+Grizzly Bear
+Ground Beetle
+Ground Centipede
+Guinea Pigs
+Hamerkop Bird
+Hamsters
+Harbour Porpoise
+Harp Seal
+Hazel Dormouse
+Hectors Dolphin
+Hedgehog
+Hermit Crabs
+Hippopotamus
+Hobo Spider
+Honey Bee
+Honey Bee Characteristics
+Hoopoe Birds
+Hornets
+Horses
+Horseshoe Crabs
+House Centipede
+Howler Monkeys
+Humboldt Penguin
+Huntsman Spider
+Hydrozoan Jellyfish
+Ibisbill Bird
+Impala
+Indian Cuckoo Bird
+Indian Rhinoceros
+Indian Skimmer Bird
+Italian Wolf
+Jackal
+Jaguar
+Jambu Fruit Dove
+Japanese Spider Crabs
+Javan Rhinoceros
+Jellyfish
+Katipo Spider
+Kea Parrot
+Kestrel Bird
+King Cobra Snakes
+King Penguin
+Kinkajou
+Kittens
+Koala
+Komodo Dragon
+Ladybird
+Laughing Kookaburra
+Lemmings
+Lemur
+Lion
+Little Fairy Penguin
+Lizards
+Llama
+Long Horned Beetle
+Longhorn Cowfish
+Lynx
+Macaque Monkeys
+Macaroni Penguin
+Magellanic Penguin
+Manatee
+Maned Wolf
+Manx Shearwater Bird
+Marine Angelfish
+Markhor
+Masai Giraffe
+Masked Finfoot Bird
+Mealy Parrot
+Meerkat
+Mexican Wolf
+Mice
+Military Macaw Parrot
+Milkweed Beetle
+Millipedes
+Monkeys
+Moose
+Morpho Butterfly
+Moth
+Mountain Goat
+Mountain Gorillas
+Mountain Zebra
+Mouse Spider
+Mud Dauber Wasp
+Musk Ox
+Natterjack toad
+New World Monkeys
+New World Tarantula Spider
+Northern Short-tailed Shrew
+Nurse Shark
+Ocelot
+Okapi
+Old World Monkeys
+Old World Tarantula Spiders
+Opossums
+Orangutan
+Orb Weaver Spiders
+Oryx (Antelope)
+Osprey
+Ostrich Birds
+Pantropical Spotted Dolphins
+Paper Wasp
+Parasitic Bees
+Peafowl Peacock
+Peccary (Javelina)
+Penguin
+Peruvian Fox
+Pigs
+Pine Marten
+Piranha Fish
+Plains Zebra
+Poison Arrow Frogs
+Polar Bear
+Polecat
+Pollan Fish
+Porcupine
+Potter Wasps
+Praying Mantis
+Preuss’s Monkey
+Puma
+Pygmy Hippopotamus
+Quagga Zebra
+Quolls
+Rabbits
+Racoon
+Rainbow Bee Eater
+Ratel
+Rattlesnakes
+Red Back Jumping Spiders
+Red British Squirrel
+Red Fox
+Red Kangaroo
+Red Kite
+Red Pandas
+Red Rock Crabs
+Red Wolf
+Red-backed Shrike
+Reticulated Giraffe
+Rhinoceros
+Rhinoceros Beetle
+Right Whales
+Risso’s Dolphin
+Roborovski Hamsters
+Rockhopper Penguin
+Rough-Toothed Dolphins
+Royal Penguin
+Sacred Ibis Bird
+Saki Monkeys
+Sally Lightfoot Crab
+Sand Lizard
+Scarlet Macaw
+Schneiders Dwarf Caiman
+Scottish Crossbill
+Sea Lion
+Sea Snakes
+Seahorse
+Seals
+Secretary Bird
+Serval
+Shark
+Sheep
+Silvery Gibbon
+Six Eyed Sand Spider
+Skipper Butterflies
+Skylark
+Slender Loris
+Sloth
+Snakes
+Snares Penguin
+Snow Leopard
+Snowshoe Hare
+Solitary Bees
+Song Thrush
+Southern Short-tailed Shrew
+Spectacled Bear
+Spectacled/Common Caiman
+Spider Monkey
+Spiders
+Spinner Dolphins
+Spotted Beetle
+Squirrel Monkeys
+St. Andrew’s Cross Spider
+Stag Beetle
+Stingless Bees
+Stink Bug
+Stoat
+Stone Curlew
+Stone Dwelling Centipede
+Striped Dolphins
+Striped Hyena
+Sugar Maple Borer Beetle
+Sumatran Rhinoceros
+Syrian Hamster
+Tamarin Monkeys
+Tangle Web Spiders
+Tapir
+Tarantula Spider
+Tawny Eagle
+Tawny Frogmouth
+Teira Batfish
+Thomson’s Gazelle
+Tiger Shark
+Titi Monkeys
+Toco Toucan
+Tortoise
+Trapdoor Spider
+Tuatara
+Tundra Wolf
+Turtles
+Vampire Bats
+Vendace Fish
+Vulture
+Wallaby
+Wasps
+Water Beetle
+Weasel
+Weevil Beetle
+West African Manatee
+West Indian Manatee
+Western Lowland Gorillas
+Whales
+White Bengal Tiger
+White Rhino
+White Stork Birds
+White-clawed Crayfish
+Wild Boar
+Wild Rabbits
+Wildebeest
+Winter White Russian Hamster
+Wolf Spider
+Wolverine
+Wolves
+Wombat
+Worms
+Yacare Caimans
+Yellow jacket Wasp
+Yellow Sac Spider
+Yellow-eyed Penguin
+Zebras

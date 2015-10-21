@@ -27,7 +27,11 @@ class User < ActiveRecord::Base
   end
 
   def name
-    self[:name] || "User ##{id}"
+    if self[:name].blank?
+      NameGenerator.new.generate(self.id)
+    else
+      self[:name]
+    end
   end
 
   def compute_score
