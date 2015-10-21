@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       end
       resources :spots, only: [:create, :show, :index], defaults: { format: :json }
       resources :guesses, only: [:create, :show, :index], defaults: { format: :json }
-      resources :users, only: [:show], defaults: { format: :json }
+      resources :users, only: [:show, :index], defaults: { format: :json }
     end
   end
 
