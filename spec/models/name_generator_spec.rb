@@ -3,7 +3,7 @@ require 'rails_helper'
 describe NameGenerator do
   describe '#generate' do
     it 'combines an adjective with an animal name' do
-      expect(NameGenerator.new(1).generate).to eq "Chubby Huntsman Spider"
+      expect(NameGenerator.new(1).generate).to eq 'Colossal Meerkat'
     end
 
     it 'gives the same name given the same seed' do
