@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  # :registerable, :recoverable, :rememberable, 
+  # :registerable, :recoverable, :rememberable,
   devise :database_authenticatable, :trackable, :validatable
   has_one :api_key
   has_many :spots
@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   validates :email, uniqueness: { allow_blank: true }
   validates :name, uniqueness: { allow_blank: true},
-                   length: { in: 4..16, allow_blank: true }
+                   length: { in: 4..20, allow_blank: true }
 
   include RoleModel
   roles :admin
@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
 
   def name
     if self[:name].blank?
-      NameGenerator.new.generate(self.id)
+      NameGenerator.new(self.id).generate
     else
       self[:name]
     end
@@ -38,9 +38,10 @@ class User < ActiveRecord::Base
     update_attribute(:score, score_transactions.sum(:amount))
   end
 
-  def self.create_for_game!(attributes  = {})
+  def self.create_for_game!(attributes = {})
     user = nil
     ActiveRecord::Base.transaction do
+      attributes[:name] ||= NameGenerator.new.generate
       user = create!(attributes)
       user.create_api_key!
       ScoreTransaction.credit_for_new_user(user)
