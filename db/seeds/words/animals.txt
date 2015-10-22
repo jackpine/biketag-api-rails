@@ -1,440 +1,129 @@
 Aardvark
 Addax
-Adelie Penguin
-African Elephant
-Forest Elephant
-African Lion
-African Penguin
-Spurred Tortoise
-African Wild Dog
-Africanized Bee
 Alligator
-Allis Shad
-Alpine Ibex
-Amazonian Manatee
-Oystercatcher Bird
-Anaconda Snake
 Ant
-Aquatic Warbler
-Arctic Wolf
 Armadillo
-Asian Elephant
-Asian Lion
-Atlantic Puffin
-Spotted Dolphin
-Atlas Beetle
-Australasian Grebe
-Australian Pelican
-Australian Swiftlet
-Bactrian Camel
 Badger
-Bean Goose
 Bee
 Beetle
-Bengal Tiger
 Bison
-Black Caiman
-Black House Spider
-Black Mamba Snake
-Black Necked Stilt
-Black Rhino
-Black Widow Spider
-Blacktip Reef Shark
-Blacktip Shark
-Blister Beetle
-Blue Macaw
-Yellow Macaw
-Blue Whale
-Bottlenose Dolphin
-Bowhead Whale
-Brandling Worm
-British Mice
-British Mole
-British Water Vole
-British Wild Cat
-Brown Recluse
-Brown Trout
-Bumble Bee
-Burying Beetle
 Butterfly
 Camel
-Dwarf Hamster
-Cape Gannet
-Capercaillie
-Capuchin Monkey
 Capybara
 Caracal
-Cardinal Bird
-Caribbean Reef Shark
 Caribou
 Cat
 Centipede
 Cheetah
 Chickaree
 Chicken
-Chimpanzee
-Chinchilla
-Chinese Hamster
-Chinstrap Penguin
 Chipmunk
-Christmas Beetle
-Cicada Killer Wasp
-Click Beetle
-Commerson Dolphin
-Common Buzzard
-Common Dolphin
-Common Frog
-Common Hippopotamus
-Common Kingfisher
-Common Lizard
-Common Newt
-Common Palm Civet
-Common Seal
-Common Toad
-Common Wasp
-Copperhead Snake
 Corncrake
-Cottonmouth Snake
 Cow
 Coyote
-Crab Plover
 Crab
 Crocodile
-Cuban Solenodon
-Darkling Beetle
-De Brazza’s Monkey
 Deer
 Dingo
 Dog
 dolphin
-Domestic Pig
 Dragonfly
-Dromedary Camel
 Platypus
 Duck
-Dung Beetle
 Earthworm
-Lowland Gorilla
-Eastern Wolf
-Elephant Seal
 Elephant
 Elk
-Emperor Penguin
 Emu
-Ethiopian Wolf
-Eurasian Wolf
-Eurasian Wryneck
-European Hare
-European Otter
-Fennec Fox
-Field Vole
 Flatworm
-Fungus Beetle
-Funnel Web Spider
 Barn Owl
-Black Tipped Shark
-Brown Noddy Tern
-Brown Pelican Bird
-Brydes Whale
-Dark Billed Cuckoo
-Galapagos Dove
-Galapagos Eel
-Galapagos Fin Whale
-Galapagos Finche
-Galapagos Flamingo
-Galapagos Fur Seal
-Galapagos Gecko
-Great Frigate Bird
-Green Sea Turtle
-Hammerhead Shark
-Galapagos Hawk
 Hoary Bat
-Humpback Whale
-Killer Whale
-Land Iguana
-Lava Gull Bird
-Lava Heron Bird
-Lava Lizard
-Marine Iguana
-Masked Booby Bird
-Minke Whale
-Mockingbird
-Nazca Booby Bird
-Galapagos Penguin
-Galapagos Rail Bird
-Galapagos Ray
 Red Bat
-Galapagos Rice Rat
-Galapagos Sea Lion
-Short Eared Owl
-Short Finned Pilot Whale
-Silky Shark
-Smooth Billed Ani Bird
-Galapagos Snake
-Galapagos Sperm Whale
-Storm Petrel Bird
-Swallow Tailed Gull
-Waved Albatross
-Whale Shark
-Whimbrel Bird
 Pintail
-Willet Bird
-Yellow Warbler Bird
-Night Heron
 Gemsbok
-Gentoo Penguin
 Gerenuk
 Gharial
-Giant Anteater
-Giant Panda Bear
-Sable Antelope
 Giraffe
 Goat
-Blue Monkey
-Golden Eagle
-Golden Pheasant
 Gorilla
-Grasshopper
-Great Bittern
-Great Crested Newt
-Great Green Macaw
-Great White Shark
 Flamingo
-Horseshoe Bat
-Mouse-Eared Bat
-Spot-Nosed Monkey
-Green Crab
-Scarab Beetle
-Grevy’s Zebra
-Grey Loerie bird
-Grey Partridge
 Grey Seal
 Grey Wolf
-Grivet Monkey
-Grizzly Bear
-Ground Beetle
-Ground Centipede
-Guinea Pig
-Hamerkop Bird
 Hamster
-Harbour Porpoise
 Harp Seal
-Hazel Dormouse
-Hectors Dolphin
 Hedgehog
-Hermit Crab
-Hippopotamus
-Hobo Spider
 Honey Bee
-Hoopoe Bird
 Hornet
 Horse
-Horseshoe Crab
-House Centipede
-Howler Monkey
-Humboldt Penguin
-Huntsman Spider
-Hydrozoan Jellyfish
-Ibisbill Bird
 Impala
-Indian Cuckoo Bird
-Indian Rhino
-Indian Skimmer Bird
-Italian Wolf
 Jackal
 Jaguar
-Jambu Fruit Dove
-Japanese Spider Crab
-Javan Rhino
 Jellyfish
-Katipo Spider
-Kea Parrot
-Kestrel Bird
-King Cobra Snake
-King Penguin
 Kinkajou
 Kitten
 Koala
-Komodo Dragon
 Ladybird
-Laughing Kookaburra
 Lemming
 Lemur
 Lion
-Little Fairy Penguin
 Lizard
 Llama
-Long Horned Beetle
-Longhorn Cowfish
 Lynx
-Macaque Monkey
-Macaroni Penguin
-Magellanic Penguin
 Manatee
-Maned Wolf
-Marine Angelfish
 Markhor
-Masai Giraffe
-Masked Finfoot Bird
-Mealy Parrot
 Meerkat
-Mexican Wolf
 Mice
-Milkweed Beetle
 Millipede
 Monkey
 Moose
-Morpho Butterfly
 Moth
-Mountain Goat
-Mountain Gorilla
-Mountain Zebra
-Mouse Spider
-Mud Dauber Wasp
 Musk Ox
-Natterjack toad
-New World Monkey
-Nurse Shark
 Ocelot
 Okapi
-Old World Monkey
-Tarantula Spider
 Opossum
 Orangutan
-Orb Weaver Spider
 Oryx
 Osprey
 Ostrich
-Paper Wasp
-Parasitic Bee
-Peafowl Peacock
 Peccary
 Penguin
-Peruvian Fox
 Pig
-Pine Marten
-Piranha Fish
-Plains Zebra
-Poison Arrow Frog
-Polar Bear
 Polecat
-Pollan Fish
 Porcupine
-Potter Wasp
-Praying Mantis
-Preuss’s Monkey
 Puma
-Pygmy Hippopotamus
-Quagga Zebra
 Quoll
 Rabbit
 Racoon
-Rainbow Bee Eater
 Ratel
-Rattlesnake
-Red British Squirrel
 Red Fox
-Red Kangaroo
 Red Kite
 Red Panda
-Red Rock Crab
 Red Wolf
-Red-backed Shrike
-Reticulated Giraffe
 Rhino
-Rhino Beetle
-Right Whale
-Risso’s Dolphin
-Roborovski Hamster
-Rockhopper Penguin
-Rough-Toothed Dolphin
-Royal Penguin
-Sacred Ibis Bird
-Saki Monkey
-Sally Lightfoot Crab
-Sand Lizard
-Scarlet Macaw
-Scottish Crossbill
 Sea Lion
 Sea Snake
 Seahorse
 Seal
-Secretary Bird
 Serval
 Shark
 Sheep
-Silvery Gibbon
-Six Eyed Sand Spider
-Skipper Butterfly
 Skylark
-Slender Loris
 Sloth
 Snake
-Snares Penguin
-Snow Leopard
-Snowshoe Hare
-Solitary Bee
-Song Thrush
-Shorttailed Shrew
-Spectacled Bear
-Spectacled Caiman
-Spider Monkey
 Spider
-Spinner Dolphin
-Spotted Beetle
-Squirrel Monkey
-Stag Beetle
-Stingless Bee
 Stink Bug
 Stoat
-Stone Curlew
-Stone Centipede
-Striped Dolphin
-Striped Hyena
-Sumatran Rhino
-Syrian Hamster
-Tamarin Monkey
-Tangle Web Spider
 Tapir
-Tawny Eagle
-Tawny Frogmouth
-Teira Batfish
-Thomson’s Gazelle
-Tiger Shark
-Titi Monkey
-Toco Toucan
 Tortoise
-Trapdoor Spider
 Tuatara
-Tundra Wolf
 Turtle
-Vampire Bat
-Vendace Fish
 Vulture
 Wallaby
-Wandering Spider
 Wasp
-Water Beetle
 Weasel
-Weevil Beetle
-African Manatee
-West Indian Manatee
 Whale
-White Bengal Tiger
-White Rhino
-White Stork Bird
-White-clawed Crayfish
 Wild Boar
-Wild Rabbit
-Wildebeest
-Russian Hamster
-Wolf Spider
 Wolverine
 Wolf
 Wombat
 Worm
-Yacare Caiman
-Yellow jacket Wasp
-Yellow Sac Spider
-Yellow-eyed Penguin
 Zebra
