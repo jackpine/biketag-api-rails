@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Spot do
   let(:game) { Game.create!}
-  let(:user) { User.create! }
+  let(:user) { User.create_for_game! }
   let(:spot) { Spot.new(location: { type: 'Point', coordinates: [-118.3240, 34.0937] }, user: user, image: image,  game: game) }
   let(:image) { fake_file }
 

@@ -1,0 +1,129 @@
+Aardvark
+Addax
+Alligator
+Ant
+Armadillo
+Badger
+Bee
+Beetle
+Bison
+Butterfly
+Camel
+Capybara
+Caracal
+Caribou
+Cat
+Centipede
+Cheetah
+Chickaree
+Chicken
+Chipmunk
+Corncrake
+Cow
+Coyote
+Crab
+Crocodile
+Deer
+Dingo
+Dog
+dolphin
+Dragonfly
+Platypus
+Duck
+Earthworm
+Elephant
+Elk
+Emu
+Flatworm
+Barn Owl
+Hoary Bat
+Red Bat
+Pintail
+Gemsbok
+Gerenuk
+Gharial
+Giraffe
+Goat
+Gorilla
+Flamingo
+Grey Seal
+Grey Wolf
+Hamster
+Harp Seal
+Hedgehog
+Honey Bee
+Hornet
+Horse
+Impala
+Jackal
+Jaguar
+Jellyfish
+Kinkajou
+Kitten
+Koala
+Ladybird
+Lemming
+Lemur
+Lion
+Lizard
+Llama
+Lynx
+Manatee
+Markhor
+Meerkat
+Mice
+Millipede
+Monkey
+Moose
+Moth
+Musk Ox
+Ocelot
+Okapi
+Opossum
+Orangutan
+Oryx
+Osprey
+Ostrich
+Peccary
+Penguin
+Pig
+Polecat
+Porcupine
+Puma
+Quoll
+Rabbit
+Racoon
+Ratel
+Red Fox
+Red Kite
+Red Panda
+Red Wolf
+Rhino
+Sea Lion
+Sea Snake
+Seahorse
+Seal
+Serval
+Shark
+Sheep
+Skylark
+Sloth
+Snake
+Spider
+Stink Bug
+Stoat
+Tapir
+Tortoise
+Tuatara
+Turtle
+Vulture
+Wallaby
+Wasp
+Weasel
+Whale
+Wild Boar
+Wolverine
+Wolf
+Wombat
+Worm
+Zebra

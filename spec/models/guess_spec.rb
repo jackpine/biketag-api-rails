@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Guess do
   let(:spot) { Spot.new(location: { type: 'Point', coordinates: [-118.3240, 34.0937] }) }
-  let(:guess) { Guess.new(image: fake_file, user: fake_user, spot: spot, location: location) }
+  let(:guess) { Guess.new(image: fake_file, user: FactoryGirl.build(:user), spot: spot, location: location) }
   let(:location) { spot.location }
 
   describe '#close_enough?' do
