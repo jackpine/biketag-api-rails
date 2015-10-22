@@ -9,10 +9,18 @@ class User < ActiveRecord::Base
   has_many :score_transactions
 
   validates :email, uniqueness: { allow_blank: true }
-  validates :name, length: { in: 4..20 }
+  validates :name, length: { in: 4..20, allow_blank: true }
 
   include RoleModel
   roles :admin
+
+  def name
+    if self[:name].blank?
+      "User ##{self.id}"
+    else
+      self[:name]
+    end
+  end
 
   # We allow users to identify using their device id
   def email_required?
