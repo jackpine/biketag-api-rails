@@ -21,7 +21,7 @@ RSpec.describe User, type: :model do
       let(:user) { User.new(name: user_name) }
       context 'with no name' do
         let(:user_name) { nil }
-        it { expect(user).not_to be_valid }
+        it { expect(user).to be_valid }
       end
       context 'with less than 4 characters' do
         let(:user_name) { 'abc' }
@@ -34,6 +34,22 @@ RSpec.describe User, type: :model do
       context 'between 4 and 20 characters' do
         let(:user_name) { 'abcdefghijklmnopqrst' }
         it { expect(user).to be_valid }
+      end
+    end
+  end
+
+  describe '#name' do
+    let(:user) { User.new(name: user_name).tap { |u| u.id = 2 } }
+    context 'without a name set' do
+      let(:user_name) { nil }
+      it 'defaults to user+id' do
+        expect(user.name).to eq('User #2')
+      end
+    end
+    context 'with a name set' do
+      let(:user_name) { 'Juan' }
+      it 'uses the specified name' do
+        expect(user.name).to eq('Juan')
       end
     end
   end
