@@ -9,8 +9,7 @@ class User < ActiveRecord::Base
   has_many :score_transactions
 
   validates :email, uniqueness: { allow_blank: true }
-  validates :name, uniqueness: { allow_blank: true},
-                   length: { in: 4..20, allow_blank: true }
+  validates :name, length: { in: 4..20 }
 
   include RoleModel
   roles :admin
@@ -24,14 +23,6 @@ class User < ActiveRecord::Base
   # Otherwise they are using a (non-recoverable!) api key
   def password_required?
     email.present?
-  end
-
-  def name
-    if self[:name].blank?
-      NameGenerator.new(self.id).generate
-    else
-      self[:name]
-    end
   end
 
   def compute_score
