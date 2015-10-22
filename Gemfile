@@ -15,6 +15,7 @@ gem 'rgeo-geojson'
 gem 'devise'
 gem 'cancancan'
 gem 'role_model'
+gem 'newrelic_rpm'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
