@@ -65,12 +65,14 @@ describe Spot do
     let(:far_away) { { 'type' => 'Point', 'coordinates' => [-18.0, 4.0] } }
     let(:some_location) { far_away }
 
-    let!(:previous_spot) { FactoryGirl.create(:spot, location: nearby) }
-    let!(:close_spot) { FactoryGirl.create(:spot, location: some_location, game: previous_spot.game) }
-    let!(:far_spot) { FactoryGirl.create(:spot, location: far_away) }
+    context 'with some spots' do
+      let!(:previous_spot) { FactoryGirl.create(:spot, location: nearby, user: user) }
+      let!(:close_spot) { FactoryGirl.create(:spot, location: some_location, game: previous_spot.game, user: user) }
+      let!(:far_spot) { FactoryGirl.create(:spot, location: far_away, user: user) }
 
-    it 'returns the latest spots for each game ordered by distance' do
-      expect(Spot.current.near(my_location)).to eq([close_spot, far_spot])
+      it 'returns the latest spots for each game ordered by distance' do
+        expect(Spot.current.near(my_location)).to eq([close_spot, far_spot])
+      end
     end
 
     context 'with a limit' do
