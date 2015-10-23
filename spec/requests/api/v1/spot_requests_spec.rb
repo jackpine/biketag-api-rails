@@ -82,4 +82,40 @@ describe 'spot requests' do
       end
     end
   end
+
+  describe 'GET /api/v1/spots/1' do
+    context "with a user who didn't create the spot" do
+      let!(:spot) { FactoryGirl.create(:spot) }
+      let!(:user) { User.create_for_game! }
+      it 'should not disclose location' do
+        get "/api/v1/spots/#{spot.id}", {}, authorization_headers_for_user(user)
+        expect(response).to be_success
+
+        actual_response = JSON.parse(response.body)
+        expected_response = JSON.parse({
+          spot:  {
+            id: spot.id,
+            game_id: spot.game.id,
+            guess_ids: [],
+            url: "http://www.example.com/api/v1/spots/#{spot.id}",
+            location: nil,
+            user_id: spot.user.id,
+            user_name: spot.user.name,
+            image_url: sprintf('http://www.example.com/uploads/spots/images/000/000/%03d/large/952_lucile.jpg', spot.id),
+            created_at: spot.created_at
+          }
+        }.to_json)
+
+
+        # Image URL has to be checked separately
+        expected_image_url = expected_response['spot'].delete('image_url')
+        actual_image_url = actual_response['spot'].delete('image_url')
+        expect(actual_response['spot']).to eq(expected_response['spot'])
+
+        actual_image_url_without_query_parameters = actual_image_url.split('?')[0]
+        expected_image_url_without_query_parameters = expected_image_url.split('?')[0]
+        expect(actual_image_url_without_query_parameters).to match(expected_image_url_without_query_parameters)
+      end
+    end
+  end
 end
