@@ -4,12 +4,12 @@ class Ability
   def initialize(user)
     if user.admin?
       can :manage, :all
-      can :view_location, Spot
+      can :read_location, Spot
     end
 
     # User can update themselves
     can :edit, User, id: user.id
-    can :view_location, Spot, user_id: user.id
+    can :read_location, Spot, user_id: user.id
 
     # Define abilities for the passed in user here. For example:
     #
