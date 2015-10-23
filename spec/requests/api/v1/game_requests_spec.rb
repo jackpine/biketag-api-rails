@@ -10,7 +10,7 @@ describe 'game requests' do
 
     describe 'GET /api/v1/games/current_spots.json' do
       it 'returns all the games current spots' do
-        get "/api/v1/games/current_spots.json", nil, Seeds.authorization_headers
+        get '/api/v1/games/current_spots.json', nil, authorization_headers_for_user(Seeds.user)
         expect(response).to be_success
 
         actual_response = JSON.parse(response.body)
@@ -46,7 +46,7 @@ describe 'game requests' do
 
     describe 'GET /api/v1/games' do
       it 'returns all the games' do
-        get "/api/v1/games.json", nil, Seeds.authorization_headers
+        get '/api/v1/games.json', nil, authorization_headers_for_user(Seeds.user)
         expect(response).to be_success
 
         actual_response = JSON.parse(response.body)
@@ -71,7 +71,7 @@ describe 'game requests' do
 
     describe 'GET /api/v1/games/1/current_spot' do
       it 'returns the current spot' do
-        get "/api/v1/games/#{Seeds.game.id}/current_spot.json", nil, Seeds.authorization_headers
+        get "/api/v1/games/#{Seeds.game.id}/current_spot.json", nil, authorization_headers_for_user(Seeds.user)
         expect(response).to be_success
 
         actual_response = JSON.parse(response.body)

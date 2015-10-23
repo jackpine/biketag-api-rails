@@ -41,3 +41,8 @@ end
 def uuid_regex
   '\h{8}-\h{4}-\h{4}-\h{4}-\h{12}'
 end
+
+def authorization_headers_for_user(user)
+  { HTTP_AUTHORIZATION: ActionController::HttpAuthentication::Token.encode_credentials(user.api_key.client_id) }
+end
+
