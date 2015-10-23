@@ -24,7 +24,7 @@ describe 'guess requests' do
           }
         end
         it 'returns a positive result' do
-          post '/api/v1/guesses', guess_params, Seeds.authorization_headers
+          post '/api/v1/guesses', guess_params, authorization_headers_for_user(Seeds.user)
           expect(response).to be_success
 
           actual_response = JSON.parse(response.body)
@@ -39,7 +39,7 @@ describe 'guess requests' do
         end
         it 'adds to the users score' do
           expect {
-            post '/api/v1/guesses', guess_params, Seeds.authorization_headers
+            post '/api/v1/guesses', guess_params, authorization_headers_for_user(Seeds.user)
           }.to change { Seeds.user.reload.score }.by(10)
         end
       end
@@ -58,7 +58,7 @@ describe 'guess requests' do
           }
         end
         it 'returns a negative result' do
-          post '/api/v1/guesses', guess_params, Seeds.authorization_headers
+          post '/api/v1/guesses', guess_params, authorization_headers_for_user(Seeds.user)
           expect(response).to be_success
 
           actual_response = JSON.parse(response.body)
@@ -67,7 +67,7 @@ describe 'guess requests' do
 
         it 'does not add to the users score' do
           expect {
-            post '/api/v1/guesses', guess_params, Seeds.authorization_headers
+            post '/api/v1/guesses', guess_params, authorization_headers_for_user(Seeds.user)
           }.not_to change { Seeds.user.reload.score }
         end
       end

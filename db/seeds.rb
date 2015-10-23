@@ -24,8 +24,4 @@ class Seeds
       lucile_spot.save!
     end
   end
-
-  def self.authorization_headers
-    { HTTP_AUTHORIZATION: ActionController::HttpAuthentication::Token.encode_credentials(self.user.api_key.client_id) }
-  end
 end
