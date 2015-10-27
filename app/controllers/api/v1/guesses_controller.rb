@@ -53,7 +53,7 @@ class Api::V1::GuessesController < Api::BaseController
   end
 
   def index
-    @guesses = Guess.all.order('created_at DESC').includes(:spot, :game)
+    @guesses = Guess.all.order('created_at DESC').includes(:user,  game: [:spots], spot: [:guesses, :user])
     @spots = @guesses.map &:spot
     @games = @guesses.map &:game
 
