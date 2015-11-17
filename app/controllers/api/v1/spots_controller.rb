@@ -50,7 +50,7 @@ class Api::V1::SpotsController < Api::BaseController
   end
 
   def index
-    @spots = Spot.all.order('created_at DESC').includes(:guesses, :user, :game)
+    @spots = Spot.all.order('created_at DESC').includes(guesses: [:user, :spot, :game], game: [:spots], user: [:guesses, :spots])
     @games = @spots.map &:game
     @users = @spots.map &:user
     @guesses = @spots.map { |spot| spot.guesses }.flatten
