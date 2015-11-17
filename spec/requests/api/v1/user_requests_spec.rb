@@ -7,6 +7,7 @@ describe 'user requests' do
       Seeds.seed!
     end
     let(:first_user) { Seeds.user }
+    let(:first_users_spot) { Seeds.lucile_spot }
 
     describe 'GET /api/v1/users' do
       let!(:second_user) { User.create_for_game!(name: 'Second User') }
@@ -20,14 +21,28 @@ describe 'user requests' do
             id: first_user.id,
             name: 'First User',
             created_at: first_user.created_at,
-            score: 50
+            score: 50,
+            guess_ids: [],
+            spot_ids: [first_users_spot.id]
           }, {
             id: second_user.id,
             name: 'Second User',
             created_at: second_user.created_at,
-            score: 50
-          }]
+            score: 50,
+            guess_ids: [],
+            spot_ids: []
+          }],
         }.to_json)
+
+        # Test that resources are side loaded, but don't verify their format
+        # here, leave that to the respective resources request specs since
+        # we're using the same partials.
+        expect(actual_response).to have_key('games')
+        actual_response.delete('games')
+        expect(actual_response).to have_key('spots')
+        actual_response.delete('spots')
+        expect(actual_response).to have_key('guesses')
+        actual_response.delete('guesses')
 
         expect(actual_response).to eq(expected_response)
       end
@@ -45,9 +60,21 @@ describe 'user requests' do
             id: first_user.id,
             name: 'First User',
             created_at: first_user.created_at,
-            score: 50
+            score: 50,
+            guess_ids: [],
+            spot_ids: [first_users_spot.id]
           }
         }.to_json)
+
+        # Test that resources are side loaded, but don't verify their format
+        # here, leave that to the respective resources request specs since
+        # we're using the same partials.
+        expect(actual_response).to have_key('games')
+        actual_response.delete('games')
+        expect(actual_response).to have_key('spots')
+        actual_response.delete('spots')
+        expect(actual_response).to have_key('guesses')
+        actual_response.delete('guesses')
 
         expect(actual_response).to eq(expected_response)
       end
@@ -69,9 +96,21 @@ describe 'user requests' do
             id: first_user.id,
             name: 'My New Username',
             created_at: first_user.created_at,
-            score: 50
+            score: 50,
+            guess_ids: [],
+            spot_ids: [first_users_spot.id]
           }
         }.to_json)
+
+        # Test that resources are side loaded, but don't verify their format
+        # here, leave that to the respective resources request specs since
+        # we're using the same partials.
+        expect(actual_response).to have_key('games')
+        actual_response.delete('games')
+        expect(actual_response).to have_key('spots')
+        actual_response.delete('spots')
+        expect(actual_response).to have_key('guesses')
+        actual_response.delete('guesses')
 
         expect(actual_response).to eq(expected_response)
       end
