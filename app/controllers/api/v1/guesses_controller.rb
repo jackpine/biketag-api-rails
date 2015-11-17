@@ -56,17 +56,10 @@ class Api::V1::GuessesController < Api::BaseController
     @guesses = Guess.all.order('created_at DESC').includes(:user,  game: [:spots], spot: [:guesses, :user])
     @spots = @guesses.map &:spot
     @games = @guesses.map &:game
-
-    respond_to do |format|
-      format.json { render :index }
-    end
   end
 
   def show
     @guess = Guess.find(params[:id])
-    respond_to do |format|
-      format.json { render :show }
-    end
   end
 
   private

@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :spots
   has_many :guesses
   has_many :score_transactions
+  has_many :games, through: :spots
 
   validates :email, uniqueness: { allow_blank: true }
   validates :name, length: { in: 4..20, allow_blank: true }

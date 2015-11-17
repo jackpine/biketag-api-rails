@@ -1,10 +1,16 @@
 class Api::V1::UsersController < Api::BaseController
   def show
     @user = User.find(params[:id])
+    @spots = @user.spots
+    @guesses = @user.guesses
+    @games = @user.games
   end
 
   def index
-    @users = User.all.order(:id)
+    @users = User.all.order(:id).includes(:spots, :guesses, :games)
+    @spots = @users.map { |user| user.spots }.flatten
+    @guesses = @users.map { |user| user.guesses }.flatten
+    @games = @users.map { |user| user.games }.flatten
   end
 
   def update
