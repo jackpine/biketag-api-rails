@@ -42,6 +42,11 @@ describe 'guess requests' do
             post '/api/v1/guesses', guess_params, authorization_headers_for_user(Seeds.user)
           }.to change { Seeds.user.reload.score }.by(10)
         end
+        it 'sends a notification' do
+          expect(Houston::Client.development).to receive(:push)
+
+          post '/api/v1/guesses', guess_params, authorization_headers_for_user(Seeds.user)
+        end
       end
 
       context 'with an incorrect guess' do

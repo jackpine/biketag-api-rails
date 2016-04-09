@@ -46,3 +46,17 @@ def authorization_headers_for_user(user)
   { HTTP_AUTHORIZATION: ActionController::HttpAuthentication::Token.encode_credentials(user.api_key.client_id) }
 end
 
+def parsed_response
+  JSON.parse(response.body)
+end
+
+# enforce API error format
+RSpec::Matchers.define :have_error do |expected|
+  match do |actual|
+    parsed_response = JSON.parse(actual.body)
+    expect(parsed_response).to have_key("error")
+    expect(parsed_response["error"]).to have_key("message")
+    expect(parsed_response["error"]["message"]).to include(expected)
+  end
+end
+

@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :guesses
   has_many :score_transactions
   has_many :games, through: :spots
+  has_many :devices
 
   validates :email, uniqueness: { allow_blank: true }
   validates :name, length: { in: 4..20, allow_blank: true }
@@ -23,7 +24,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  # We allow users to identify using their device id
   def email_required?
     false
   end
@@ -48,4 +48,9 @@ class User < ActiveRecord::Base
     end
     user
   end
+
+  def device_notification_tokens
+    devices.select('notification_token').map(&:notification_token)
+  end
+
 end

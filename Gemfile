@@ -17,6 +17,8 @@ gem 'cancancan'
 gem 'role_model'
 gem 'newrelic_rpm'
 
+gem 'houston'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

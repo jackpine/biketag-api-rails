@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151021212031) do
+ActiveRecord::Schema.define(version: 20160409230118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 20151021212031) do
   add_index "api_keys", ["client_id"], name: "index_api_keys_on_client_id", unique: true, using: :btree
   add_index "api_keys", ["secret"], name: "index_api_keys_on_secret", unique: true, using: :btree
   add_index "api_keys", ["user_id"], name: "index_api_keys_on_user_id", using: :btree
+
+  create_table "devices", force: :cascade do |t|
+    t.string   "notification_token", limit: 255, null: false
+    t.integer  "user_id",                        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "devices", ["notification_token"], name: "index_devices_on_notification_token", unique: true, using: :btree
+  add_index "devices", ["user_id"], name: "index_devices_on_user_id", using: :btree
 
   create_table "games", force: :cascade do |t|
     t.datetime "created_at", null: false

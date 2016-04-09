@@ -4,6 +4,7 @@ class Guess < ActiveRecord::Base
   belongs_to :spot
   has_one :game, through: :spot
 
+  validates :user, presence: true
   validates :location, presence: true
   validates :spot, associated: true, presence: true
 
@@ -15,12 +16,12 @@ class Guess < ActiveRecord::Base
   validates_attachment :image, content_type: { content_type: ['image/jpg', 'image/jpeg'] }
                                # presence: true, # guess image is currently optional
 
-  def image_url
-    image.url(:medium)
-  end
-
   def self.generate_image_filename
     SecureRandom.uuid + '.jpg'
+  end
+
+  def image_url
+    image.url(:medium)
   end
 
   def correct
@@ -28,6 +29,7 @@ class Guess < ActiveRecord::Base
   end
 
   delegate :id, to: :game, prefix: true
+  delegate :name, to: :user, prefix: true, allow_nil: true
 
   before_save do
     correct
@@ -41,6 +43,7 @@ class Guess < ActiveRecord::Base
     if save
       if correct
         ScoreTransaction.credit_for_correct_guess(self)
+        SpotNotifier.send_successful_guess_notifications(self)
       end
       true
     else
@@ -76,4 +79,5 @@ class Guess < ActiveRecord::Base
       Spot.create!(location: self.location, image: self.image, user: self.user, game: Game.create!)
     end
   end
+
 end

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources :spots, only: [:create, :show, :index], defaults: { format: :json }
       resources :guesses, only: [:create, :show, :index], defaults: { format: :json }
       resources :users, only: [:show, :index, :update], defaults: { format: :json }
+      resources :devices, only: [:show, :create], defaults: { format: :json }
     end
   end
 
