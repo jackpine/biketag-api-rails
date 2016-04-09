@@ -22,7 +22,7 @@ default: &default
   # So, hardcoding for now...
   host: biketag-db
   port: "5432"
-  user: postgres
+  username: postgres
   timeout: 5000
 
 development:
