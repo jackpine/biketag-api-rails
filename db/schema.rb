@@ -30,12 +30,14 @@ ActiveRecord::Schema.define(version: 20160409230118) do
   add_index "api_keys", ["user_id"], name: "index_api_keys_on_user_id", using: :btree
 
   create_table "devices", force: :cascade do |t|
-    t.string   "notification_token", limit: 255, null: false
-    t.integer  "user_id",                        null: false
+    t.string   "notification_token", limit: 255,                null: false
+    t.integer  "user_id",                                       null: false
+    t.boolean  "active",                         default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "devices", ["active"], name: "index_devices_on_active", using: :btree
   add_index "devices", ["notification_token"], name: "index_devices_on_notification_token", unique: true, using: :btree
   add_index "devices", ["user_id"], name: "index_devices_on_user_id", using: :btree
 

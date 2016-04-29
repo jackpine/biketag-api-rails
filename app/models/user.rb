@@ -49,8 +49,8 @@ class User < ActiveRecord::Base
     user
   end
 
-  def device_notification_tokens
-    devices.select('notification_token').map(&:notification_token)
+  def active_device_notification_tokens
+    devices.active.select('active, notification_token').map(&:notification_token)
   end
 
 end

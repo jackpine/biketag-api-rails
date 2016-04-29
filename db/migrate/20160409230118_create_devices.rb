@@ -3,6 +3,7 @@ class CreateDevices < ActiveRecord::Migration
     create_table :devices do |t|
       t.string :notification_token, limit: 255, null: false
       t.references :user, null: false, index: true
+      t.boolean :active, default: true, index: true
 
       t.timestamps
     end

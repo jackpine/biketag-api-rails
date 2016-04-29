@@ -13,7 +13,7 @@ describe 'device requests' do
       it "registers a new device with the current user's account" do
         expect {
           post '/api/v1/devices', { device: { notification_token: "some-fake-token" }}, authorization_headers_for_user(user)
-        }.to change { user.device_notification_tokens.count }.by(1)
+        }.to change { user.active_device_notification_tokens.count }.by(1)
 
         expect(response).to be_success
 
@@ -32,7 +32,7 @@ describe 'device requests' do
       it "fails with malformed token" do
         expect {
           post '/api/v1/devices', { device: { notification_token: "" }}, authorization_headers_for_user(user)
-        }.not_to change { user.device_notification_tokens.count }
+        }.not_to change { user.active_device_notification_tokens.count }
         expect(response).not_to be_success
 
         expect(response).to have_error("token can't be blank")

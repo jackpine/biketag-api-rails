@@ -7,4 +7,6 @@ class Device < ActiveRecord::Base
                                  uniqueness: true,
                                  length: { maximum: 255 }
 
+  scope :active, ->{ where(active: true) }
+
 end
