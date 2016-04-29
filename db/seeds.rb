@@ -12,6 +12,7 @@ class Seeds
 
   def self.seed!
     self.user = User.create_for_game!(name: "First User", roles: :admin)
+    self.user.devices.create!(notification_token: "footch")
 
     self.game = Game.create!
     self.lucile_spot = Spot.new(location: { type: "Point",
