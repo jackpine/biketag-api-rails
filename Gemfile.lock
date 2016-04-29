@@ -56,6 +56,7 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
+    byebug (8.2.2)
     cancancan (1.13.1)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -276,6 +277,9 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (3.3.0)
+      byebug (~> 8.0)
+      pry (~> 0.10)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -406,6 +410,7 @@ DEPENDENCIES
   paperclip
   pg
   pry
+  pry-byebug
   rack-permissive-cors!
   rails (= 4.2.0)
   rgeo-geojson
