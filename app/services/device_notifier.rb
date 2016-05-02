@@ -17,7 +17,7 @@ class DeviceNotifier
 
   def self.notification_environment=(val)
     new_environment = ActiveSupport::StringInquirer.new(val.to_s)
-    if new_environment.production? || new_environment.development? || new_environment.test?
+    if new_environment.production? || new_environment.development? || new_environment.fake?
       @@notification_environment = new_environment
     else
       raise ArgumentError.new("unknown notification environment: #{new_environment}")
@@ -64,7 +64,7 @@ class DeviceNotifier
     @client ||=
       if self.class.notification_environment.production?
         Houston::Client.production
-      elsif self.class.notification_environment.test?
+      elsif self.class.notification_environment.fake?
         FakeAPNSClient.new
       elsif self.class.notification_environment.development?
         Houston::Client.development

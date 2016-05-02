@@ -8,7 +8,7 @@ describe DeviceNotifier do
     subject { DeviceNotifier.new.send(:client) }
     after do
       # Make sure we're returning to test mode ;)
-      DeviceNotifier.notification_environment = :test
+      DeviceNotifier.notification_environment = :fake
     end
 
     it 'has a production mode' do
@@ -21,8 +21,8 @@ describe DeviceNotifier do
       expect(subject).to be_a(Houston::Client)
     end
 
-    it 'has a test mode' do
-      DeviceNotifier.notification_environment = :test
+    it 'has a fake mode' do
+      DeviceNotifier.notification_environment = :fake
       expect(subject).to be_a(DeviceNotifier::FakeAPNSClient)
     end
 
