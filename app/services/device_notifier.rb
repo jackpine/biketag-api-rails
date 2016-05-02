@@ -1,31 +1,36 @@
 class DeviceNotifier
 
-  PRODUCTION_ENV = "production"
-  DEVELOPMENT_ENV = "development"
+  # Used for testing notifications without talking to Apple services.
+  # Intended to be compatible with Houston::Client
+  class FakeAPNSClient
+    attr_reader :delivered_notifications
 
-  def self.set_production_notification_environment!
-    @@notification_environment = PRODUCTION_ENV
+    def initialize
+      @delivered_notifications = []
+    end
+
+    def push(payload)
+      @delivered_notifications << payload
+      Rails.logger.debug("Pushed fake notification_payload: #{payload.inspect}")
+    end
   end
 
-  def self.production_notification_environment?
-    @@notification_environment == PRODUCTION_ENV
+  def self.notification_environment=(val)
+    new_environment = ActiveSupport::StringInquirer.new(val.to_s)
+    if new_environment.production? || new_environment.development? || new_environment.test?
+      @@notification_environment = new_environment
+    else
+      raise ArgumentError.new("unknown notification environment: #{new_environment}")
+    end
   end
 
-  def self.set_development_notification_environment!
-    @@notification_environment = DEVELOPMENT_ENV
+  def self.notification_environment
+    @@notification_environment
   end
 
-  def self.development_notification_environment?
-    @@notification_environment == DEVELOPMENT_ENV
-  end
-
-  def client
-    self.class.production_notification_environment? ? Houston::Client.production : Houston::Client.development
-  end
-
-  # It's important to regularly remove devices that Apple reporst as stale.  If
+  # It's important to regularly remove devices that Apple reports as stale. If
   # you continue to try to notify stale devices, Apple may revoke your access
-  # to APNS
+  # to APNS!
   def deactivate_stale_devices!
     device_tokens = client.devices
     Rails.logger.info "Found #{device_tokens.length} stale devices."
@@ -42,4 +47,30 @@ class DeviceNotifier
       end
     end
   end
+
+  def deliver_now(notification, to: nil)
+    recipient_tokens = Array(to)
+
+    recipient_tokens.each do |recipient_token|
+      push_notification = notification.push_notification
+      push_notification.token = recipient_token
+      client.push(push_notification)
+    end
+  end
+
+  private
+
+  def client
+    @client ||=
+      if self.class.notification_environment.production?
+        Houston::Client.production
+      elsif self.class.notification_environment.test?
+        FakeAPNSClient.new
+      elsif self.class.notification_environment.development?
+        Houston::Client.development
+      else
+        raise StandardError.new("Unkown client_notification_environment: #{self.client_notification_environment.inspect}")
+      end
+  end
+
 end

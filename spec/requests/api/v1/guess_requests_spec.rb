@@ -43,7 +43,7 @@ describe 'guess requests' do
           }.to change { Seeds.user.reload.score }.by(10)
         end
         it 'sends a notification' do
-          expect_any_instance_of(Notifications::SuccessfulGuessNotification).to receive(:send!)
+          expect_any_instance_of(DeviceNotifier).to receive(:deliver_now).with(Notifications::SuccessfulGuessNotification)
           post '/api/v1/guesses', guess_params, authorization_headers_for_user(Seeds.user)
         end
       end

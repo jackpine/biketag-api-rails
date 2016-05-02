@@ -43,7 +43,8 @@ class Guess < ActiveRecord::Base
     if save
       if correct
         ScoreTransaction.credit_for_correct_guess(self)
-        SpotNotifier.send_successful_guess_notifications(self)
+        guess_notification = Notifications::SuccessfulGuessNotification.new(self)
+        DeviceNotifier.new.deliver_now(guess_notification)
       end
       true
     else
