@@ -35,7 +35,7 @@ def stub_authentication!
 end
 
 def fake_file
-  File.open('db/seeds/images/952_lucile.jpg')
+  File.open('db/seeds/images/fake_image.jpg')
 end
 
 def uuid_regex
