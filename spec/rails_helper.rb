@@ -9,6 +9,8 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
 
+DeviceNotifier.notification_environment = :fake
+
 RSpec.configure do |config|
   # Use DatabaseCleaner instead of Rspec to clean the database
   config.use_transactional_fixtures = false
@@ -17,10 +19,8 @@ RSpec.configure do |config|
    config.before(:suite) do
      DatabaseCleaner.strategy = :transaction
      DatabaseCleaner.clean_with(:truncation)
-   end
-
-   config.after(:each, type: :requests) do
-     DatabaseCleaner.clean_with(:truncation)
+     require Rails.root + 'db/seeds.rb'
+     Seeds.seed!
    end
 
    config.around(:each) do |example|
