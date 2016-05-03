@@ -20,8 +20,11 @@ ADD Gemfile.lock /tmp/Gemfile.lock
 RUN bundle install
 
 ADD . /home/app/biketag-api
-# Copy over template env file
-ADD .env-template /home/app/biketag-api/.env
+
+# Script to copy mounted env secrets
+RUN mkdir -p /etc/my_init.d
+ADD config/containers/api/conf/distribute-secrets.sh /etc/my_init.d/10-distribute-secrets.sh
+
 RUN chown -R app:app /home/app/biketag-api
 
 # Clean up APT when done.
