@@ -44,7 +44,7 @@ class Guess < ActiveRecord::Base
       if correct
         ScoreTransaction.credit_for_correct_guess(self)
         guess_notification = Notifications::SuccessfulGuessNotification.new(self)
-        DeviceNotifier.new.deliver_now(guess_notification)
+        DeviceNotifier.new.deliver_now(guess_notification, to: self.spot.user.active_device_notification_tokens)
       end
       true
     else

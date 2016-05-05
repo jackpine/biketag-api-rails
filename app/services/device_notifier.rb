@@ -52,6 +52,7 @@ class DeviceNotifier
     recipient_tokens = Array(to)
 
     recipient_tokens.each do |recipient_token|
+      Rails.logger.info("Sent push notification to: #{recipient_token}")
       push_notification = notification.push_notification
       push_notification.token = recipient_token
       client.push(push_notification)
