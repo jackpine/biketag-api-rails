@@ -20,16 +20,19 @@ class ScoreTransaction < ActiveRecord::Base
 
   def self.credit_for_correct_guess(guess)
     description = "Correctly guessed #{guess.spot.user.name}'s spot (spot: #{guess.spot.id}, guess: #{guess.id})"
+    Rails.logger.info(description)
     self.create!(user: guess.user, amount: ScoreAmounts::CORRECT_GUESS, description: description)
   end
 
   def self.credit_for_new_user(user)
     description = 'Initial points'
+    Rails.logger.info(description)
     self.create!(user: user, amount: ScoreAmounts::NEW_USER, description: description)
   end
 
   def self.debit_for_new_game(spot)
     description = "Started new game with spot: #{spot.id}"
+    Rails.logger.info(description)
     self.create!(user: spot.user, amount: ScoreAmounts::NEW_GAME, description: description)
   end
 

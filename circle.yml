@@ -1,0 +1,4 @@
+checkout:
+  post:
+    - cp .env-template .env
+

@@ -9,6 +9,8 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!
 
+DeviceNotifier.notification_environment = :fake
+
 RSpec.configure do |config|
   # Use DatabaseCleaner instead of Rspec to clean the database
   config.use_transactional_fixtures = false
@@ -17,10 +19,8 @@ RSpec.configure do |config|
    config.before(:suite) do
      DatabaseCleaner.strategy = :transaction
      DatabaseCleaner.clean_with(:truncation)
-   end
-
-   config.after(:each, type: :requests) do
-     DatabaseCleaner.clean_with(:truncation)
+     require Rails.root + 'db/seeds.rb'
+     Seeds.seed!
    end
 
    config.around(:each) do |example|
@@ -35,7 +35,7 @@ def stub_authentication!
 end
 
 def fake_file
-  File.open('db/seeds/images/952_lucile.jpg')
+  File.open('db/seeds/images/fake_image.jpg')
 end
 
 def uuid_regex
@@ -44,5 +44,19 @@ end
 
 def authorization_headers_for_user(user)
   { HTTP_AUTHORIZATION: ActionController::HttpAuthentication::Token.encode_credentials(user.api_key.client_id) }
+end
+
+def parsed_response
+  JSON.parse(response.body)
+end
+
+# enforce API error format
+RSpec::Matchers.define :have_error do |expected|
+  match do |actual|
+    parsed_response = JSON.parse(actual.body)
+    expect(parsed_response).to have_key("error")
+    expect(parsed_response["error"]).to have_key("message")
+    expect(parsed_response["error"]["message"]).to include(expected)
+  end
 end
 
