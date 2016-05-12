@@ -22,7 +22,8 @@ describe 'spot requests' do
     it 'creates a new spot' do
 
       expect {
-        post '/api/v1/spots', new_spot_parameters, authorization_headers_for_user(Seeds.user)
+        post '/api/v1/spots', params: new_spot_parameters,
+                              headers: authorization_headers_for_user(Seeds.user)
       }.not_to change { user.reload.score }
       expect(response).to be_success
 
@@ -60,7 +61,8 @@ describe 'spot requests' do
 
       it 'should charge the user for creating a new game' do
         expect {
-          post '/api/v1/spots', new_game_spot_parameters, authorization_headers_for_user(Seeds.user)
+          post '/api/v1/spots', params: new_game_spot_parameters,
+                                headers: authorization_headers_for_user(Seeds.user)
         }.to change { user.reload.score }.by(-25)
         expect(response).to be_success
       end
@@ -70,7 +72,8 @@ describe 'spot requests' do
       let(:new_spot_coordinates) { previous_spot.location['coordinates'] }
 
       it 'should fail to create the new spot' do
-        post '/api/v1/spots', new_spot_parameters, authorization_headers_for_user(Seeds.user)
+        post '/api/v1/spots', params: new_spot_parameters,
+                              headers: authorization_headers_for_user(Seeds.user)
         expect(response).not_to be_success
         expect(JSON.parse(response.body)['error']['message']).to include('farther')
       end
@@ -83,7 +86,7 @@ describe 'GET /api/v1/spots/1' do
     let!(:spot) { FactoryGirl.create(:spot) }
     let!(:user) { User.create_for_game! }
     it 'should not disclose location' do
-      get "/api/v1/spots/#{spot.id}", {}, authorization_headers_for_user(user)
+      get "/api/v1/spots/#{spot.id}", headers: authorization_headers_for_user(user)
       expect(response).to be_success
 
       actual_response = JSON.parse(response.body)

@@ -7,7 +7,7 @@ describe 'user requests' do
   describe 'GET /api/v1/users' do
     let!(:second_user) { User.create_for_game!(name: 'Second User') }
     it 'should return an array of users' do
-      get '/api/v1/users.json', nil, authorization_headers_for_user(Seeds.user)
+      get '/api/v1/users.json', headers: authorization_headers_for_user(Seeds.user)
       expect(response).to be_success
 
       actual_response = JSON.parse(response.body)
@@ -46,7 +46,7 @@ describe 'user requests' do
   describe 'GET /api/v1/users/1' do
 
     it 'should return details about the user' do
-      get "/api/v1/users/#{first_user.id}.json", nil, authorization_headers_for_user(Seeds.user)
+      get "/api/v1/users/#{first_user.id}.json", headers: authorization_headers_for_user(Seeds.user)
       expect(response).to be_success
 
       actual_response = JSON.parse(response.body)
@@ -82,7 +82,8 @@ describe 'user requests' do
           name: 'My New Username'
         }
       }
-      put "/api/v1/users/#{first_user.id}.json", update_params, authorization_headers_for_user(Seeds.user)
+      put "/api/v1/users/#{first_user.id}.json", params: update_params,
+                                                 headers: authorization_headers_for_user(Seeds.user)
       expect(response).to be_success
 
       actual_response = JSON.parse(response.body)

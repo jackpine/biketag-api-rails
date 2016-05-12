@@ -19,7 +19,8 @@ describe 'guess requests' do
         }
       end
       it 'returns a positive result' do
-        post '/api/v1/guesses', guess_params, authorization_headers_for_user(Seeds.user)
+        post '/api/v1/guesses', params: guess_params,
+                                headers: authorization_headers_for_user(Seeds.user)
         expect(response).to be_success
 
         actual_response = JSON.parse(response.body)
@@ -34,12 +35,14 @@ describe 'guess requests' do
       end
       it 'adds to the users score' do
         expect {
-          post '/api/v1/guesses', guess_params, authorization_headers_for_user(Seeds.user)
+          post '/api/v1/guesses', params: guess_params,
+                                  headers: authorization_headers_for_user(Seeds.user)
         }.to change { Seeds.user.reload.score }.by(10)
       end
       it 'sends a notification' do
         expect_any_instance_of(DeviceNotifier).to receive(:deliver_now).with(Notifications::SuccessfulGuessNotification, to: ['footch'])
-        post '/api/v1/guesses', guess_params, authorization_headers_for_user(Seeds.user)
+        post '/api/v1/guesses', params: guess_params,
+                                headers: authorization_headers_for_user(Seeds.user)
       end
     end
 
@@ -57,7 +60,8 @@ describe 'guess requests' do
         }
       end
       it 'returns a negative result' do
-        post '/api/v1/guesses', guess_params, authorization_headers_for_user(Seeds.user)
+        post '/api/v1/guesses', params: guess_params,
+                                headers: authorization_headers_for_user(Seeds.user)
         expect(response).to be_success
 
         actual_response = JSON.parse(response.body)
@@ -66,7 +70,8 @@ describe 'guess requests' do
 
       it 'does not add to the users score' do
         expect {
-          post '/api/v1/guesses', guess_params, authorization_headers_for_user(Seeds.user)
+          post '/api/v1/guesses', params: guess_params,
+                                  headers: authorization_headers_for_user(Seeds.user)
         }.not_to change { Seeds.user.reload.score }
       end
     end
