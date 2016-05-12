@@ -37,6 +37,21 @@ describe 'game requests' do
       expected_image_url_without_query_parameters = expected_image_url.split("?")[0]
       expect(actual_image_url_without_query_parameters).to match(expected_image_url_without_query_parameters)
     end
+
+    context 'when specifying location' do
+      let!(:near_spot) { Seeds.lucile_spot }
+      let!(:far_spot) { FactoryGirl.create(:spot, location: RGeo::GeoJSON.encode(RGeoHelpers::MetricPointOffsets.offset(near_spot[:location], by_x_meters:500, by_y_meters: 500))) }
+      let!(:midway_spot) { FactoryGirl.create(:spot, location: RGeo::GeoJSON.encode(RGeoHelpers::MetricPointOffsets.offset(near_spot[:location], by_x_meters:200, by_y_meters: 200))) }
+
+      it 'returns spots sorted by distance from location' do
+        get '/api/v1/games/current_spots.json', params: { filter: { location: near_spot.location }},
+                                                headers: authorization_headers_for_user(Seeds.user)
+        expect(response).to be_success
+
+        actual_ids = JSON.parse(response.body)["spots"].map {|spot| spot["id"]}
+        expect(actual_ids).to eq([near_spot.id, midway_spot.id, far_spot.id])
+      end
+    end
   end
 
   describe 'GET /api/v1/games' do
