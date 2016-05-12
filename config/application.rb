@@ -34,8 +34,7 @@ module BikeTag
     config.host_uploads_locally = ENV['RAILS_HOST_UPLOADS_LOCALLY'] && ENV['RAILS_HOST_UPLOADS_LOCALLY'] != 'false'
 
     require 'rack/permissive-cors'
-    config.middleware.insert_before(ActionDispatch::Static,
-                                    Rack::PermissiveCors)
+    config.middleware.insert_after(Rack::Sendfile, Rack::PermissiveCors)
 
     config.default_host = ENV['RAILS_DEFAULT_HOST']
   end

@@ -24,9 +24,6 @@ gem 'houston'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
-
 gem 'paperclip'
 gem 'fog-aws'
 gem 'fog-local'
@@ -54,8 +51,6 @@ group :development, :test do
 
   # pegged for rails 5 compatibility
   gem 'rspec-rails', '3.5.0.beta3'
-
-  gem 'rspec-activemodel-mocks'
   gem 'guard-rspec', require: false
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
@@ -63,10 +58,6 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen'
   gem 'spring-commands-rspec', group: :development
-end
-
-group :development do
-  gem 'web-console'
 end
 
 group :test do
