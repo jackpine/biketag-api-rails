@@ -1,5 +1,5 @@
 class Api::V1::ApiKeysController < Api::BaseController
-  skip_before_filter :authenticate_user_from_token!
+  skip_before_action :authenticate_user_from_token!
 
   def create
     user = User.create_for_game!

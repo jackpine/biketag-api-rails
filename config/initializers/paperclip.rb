@@ -17,6 +17,7 @@ else
     s3_protocol: 'https',
     url: ':s3_alias_url',
     s3_host_alias: ENV['AWS_S3_HOST_ALIAS'],
+    s3_region: ENV['AWS_S3_REGION'],
     s3_credentials: {
       bucket: ENV['AWS_S3_BUCKET'],
       access_key_id: ENV['AWS_ACCESS_KEY_ID'],

@@ -2,7 +2,7 @@ class Api::BaseController < ApplicationController
 
   # Don't do regular CSRF protection over the json API, rather just ignore the entire session
   protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format == 'application/json' }
-  before_filter :authenticate_user_from_token!, except: ['handle_options_request']
+  before_action :authenticate_user_from_token!, except: ['handle_options_request']
 
   def default_url_options
     { :host => Rails.application.config.default_host }

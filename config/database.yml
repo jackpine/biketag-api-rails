@@ -20,8 +20,8 @@ default: &default
   # port: <%= ENV['BIKETAG_DB_PORT_5432_TCP_PORT'] %>
   #
   # So, hardcoding for now...
-  host: biketag-db
-  port: "5432"
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
   username: postgres
   timeout: 5000
 

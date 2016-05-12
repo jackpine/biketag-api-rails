@@ -1,5 +1,6 @@
-require File.expand_path('../boot', __FILE__)
+require_relative 'boot'
 
+require "rails"
 # Pick the frameworks you want:
 require "active_model/railtie"
 require "active_job/railtie"
@@ -28,13 +29,10 @@ module BikeTag
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
     config.host_uploads_locally = ENV['RAILS_HOST_UPLOADS_LOCALLY'] && ENV['RAILS_HOST_UPLOADS_LOCALLY'] != 'false'
 
     require 'rack/permissive-cors'
-    config.middleware.insert_before(ActionDispatch::Static,
-                                    Rack::PermissiveCors)
+    config.middleware.insert_after(Rack::Sendfile, Rack::PermissiveCors)
 
     config.default_host = ENV['RAILS_DEFAULT_HOST']
   end

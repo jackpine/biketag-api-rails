@@ -14,7 +14,7 @@ end
 
 describe 'authorization' do
   it 'authorized requests responds without error' do
-    get "/api/v1/games/#{Seeds.game.id}/current_spot.json", nil, authorization_headers_for_user(Seeds.user)
+    get "/api/v1/games/#{Seeds.game.id}/current_spot.json", headers: authorization_headers_for_user(Seeds.user)
     expect(response).to be_success
   end
   it 'unauthorized requests responds with a JSON error' do
