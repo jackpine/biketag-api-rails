@@ -10,7 +10,7 @@ gem 'rack-permissive-cors', git: "https://github.com/jackpine/rack-permissive-co
 gem 'dotenv-rails'
 
 gem 'pg'
-gem 'activerecord-postgis-adapter', '3.0.0.beta2'
+gem 'activerecord-postgis-adapter'
 gem 'rgeo-geojson'
 gem 'devise'
 gem 'cancancan'
