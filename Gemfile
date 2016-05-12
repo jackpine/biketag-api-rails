@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~>  4.2.0'
+gem 'rails', '>= 5.0.0.rc1', '< 5.1'
 
 gem 'rack-permissive-cors', git: "https://github.com/jackpine/rack-permissive-cors.git"
 
@@ -10,8 +10,10 @@ gem 'rack-permissive-cors', git: "https://github.com/jackpine/rack-permissive-co
 gem 'dotenv-rails'
 
 gem 'pg'
-gem 'activerecord-postgis-adapter'
+# pegged for rails 5 compatibility
+gem 'activerecord-postgis-adapter', '~> 4.0.0.beta'
 gem 'rgeo-geojson'
+
 gem 'devise'
 gem 'cancancan'
 gem 'role_model'
@@ -50,12 +52,16 @@ group :development, :test do
 
   gem 'factory_girl_rails'
 
-  gem 'rspec-rails'
+  # pegged for rails 5 compatibility
+  gem 'rspec-rails', '3.5.0.beta3'
+
   gem 'rspec-activemodel-mocks'
   gem 'guard-rspec', require: false
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'listen'
   gem 'spring'
+  gem 'spring-watcher-listen'
   gem 'spring-commands-rspec', group: :development
 end
 
