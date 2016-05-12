@@ -1,4 +1,1 @@
-public/uploads/
-log/
-.git/
-.env
+.gitignore
