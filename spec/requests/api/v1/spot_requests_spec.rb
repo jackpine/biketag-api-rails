@@ -83,7 +83,7 @@ end
 
 describe 'GET /api/v1/spots/1' do
   context "with a user who didn't create the spot" do
-    let!(:spot) { FactoryGirl.create(:spot) }
+    let!(:spot) { FactoryBot.create(:spot) }
     let!(:user) { User.create_for_game! }
     it 'should not disclose location' do
       get "/api/v1/spots/#{spot.id}", headers: authorization_headers_for_user(user)

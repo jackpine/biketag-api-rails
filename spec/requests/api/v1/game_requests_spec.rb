@@ -40,8 +40,8 @@ describe 'game requests' do
 
     context 'when specifying location' do
       let!(:near_spot) { Seeds.lucile_spot }
-      let!(:far_spot) { FactoryGirl.create(:spot, location: RGeo::GeoJSON.encode(RGeoHelpers::MetricPointOffsets.offset(near_spot[:location], by_x_meters:500, by_y_meters: 500))) }
-      let!(:midway_spot) { FactoryGirl.create(:spot, location: RGeo::GeoJSON.encode(RGeoHelpers::MetricPointOffsets.offset(near_spot[:location], by_x_meters:200, by_y_meters: 200))) }
+      let!(:far_spot) { FactoryBot.create(:spot, location: RGeo::GeoJSON.encode(RGeoHelpers::MetricPointOffsets.offset(near_spot[:location], by_x_meters:500, by_y_meters: 500))) }
+      let!(:midway_spot) { FactoryBot.create(:spot, location: RGeo::GeoJSON.encode(RGeoHelpers::MetricPointOffsets.offset(near_spot[:location], by_x_meters:200, by_y_meters: 200))) }
 
       it 'returns spots sorted by distance from location' do
         get '/api/v1/games/current_spots.json', params: { filter: { location: near_spot.location }},

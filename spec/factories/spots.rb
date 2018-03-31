@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :spot do
     image { fake_file }
     user

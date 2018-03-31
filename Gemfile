@@ -47,9 +47,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-byebug'
 
-  gem 'factory_girl_rails'
-
-  # pegged for rails 5 compatibility
+  gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
 

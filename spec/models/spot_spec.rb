@@ -66,9 +66,9 @@ describe Spot do
     context 'with some spots' do
       let!(:close_spot) { Seeds.lucile_spot }
 
-      let!(:old_spot) { FactoryGirl.create(:spot, location: Seeds.lucile_spot.location, user: user) }
+      let!(:old_spot) { FactoryBot.create(:spot, location: Seeds.lucile_spot.location, user: user) }
       # Same game as previous spot, but more recent
-      let!(:far_spot) { FactoryGirl.create(:spot, location: far_away, user: user, game: old_spot.game) }
+      let!(:far_spot) { FactoryBot.create(:spot, location: far_away, user: user, game: old_spot.game) }
 
       it 'returns the latest spots for each game ordered by distance' do
         expect(Spot.current.near(RGeo::GeoJSON.decode(my_location))).to eq([close_spot, far_spot])
@@ -77,8 +77,8 @@ describe Spot do
 
     context 'with a limit' do
       let!(:close_old_spot) { Seeds.lucile_spot }
-      let!(:close_new_spot) { FactoryGirl.create(:spot, location: my_location, user: user) }
-      let!(:far_new_spot) { FactoryGirl.create(:spot, location: far_away, user: user) }
+      let!(:close_new_spot) { FactoryBot.create(:spot, location: my_location, user: user) }
+      let!(:far_new_spot) { FactoryBot.create(:spot, location: far_away, user: user) }
 
       it 'includes only the closest spots' do
         spots = Spot.current.near(RGeo::GeoJSON.decode(my_location)).limit(2)

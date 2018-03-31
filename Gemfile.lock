@@ -611,10 +611,10 @@ GEM
       railties (>= 3.2, < 5.2)
     erubis (2.7.0)
     excon (0.62.0)
-    factory_girl (4.9.0)
+    factory_bot (4.8.2)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.9.0)
-      factory_girl (~> 4.9.0)
+    factory_bot_rails (4.8.2)
+      factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
     ffi (1.9.23)
     fog-aws (2.0.1)
@@ -805,7 +805,7 @@ DEPENDENCIES
   database_cleaner
   devise
   dotenv-rails
-  factory_girl_rails
+  factory_bot_rails
   fog-aws
   fog-local
   guard-rspec
