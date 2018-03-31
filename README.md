@@ -27,17 +27,9 @@ and varies accross platforms.
 Installation
 ------------
 
-Start the api container
-
-    me@my-laptop$ config/containers/api/run.sh
-
-You can open a shell on the api container like this
-
-    me@my-laptop$ config/containers/api/shell.sh
-
 ### Database
 
-Start the db container like this
+First start the db container like this
 
     me@my-laptop$ config/containers/db/run.sh
 
@@ -45,6 +37,15 @@ Postgresql starts automatically when the biketag-db container is
 started. You can open a sql shell on the container like this
 
     me@my-laptop$ config/containers/db/shell.sh
+
+
+Start the api container
+
+    me@my-laptop$ config/containers/api/run.sh
+
+You can open a shell on the api container like this
+
+    me@my-laptop$ config/containers/api/shell.sh
 
 Check your work with `docker ps`. You should see both a 'biketag-db' and
 a 'biketag-api' container running.
@@ -111,6 +112,12 @@ the api server from your local machine.
 
   me@my-laptop$ curl localhost:3000/api/v1/games/1/current_spot.json
 
+Updating Docker Image
+---------------------
+
+Doing development locally requires postgres is installed (in order to
+build the pg gem), it's also possible to develop on a docker image.
+
 Deployment
 ==========
 
@@ -146,9 +153,8 @@ Staging
     ]
 }
 ```
-
-
 ### Digital Ocean
+
 Provision a single CoreOS Host on Digital Ocean. It needs to have at
 least a gig of ram, because, well... fucking ruby. For staging we'll run
 the DB and API containers on the same node.
