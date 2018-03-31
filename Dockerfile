@@ -8,7 +8,7 @@ CMD ["/sbin/my_init"]
 
 RUN apt-get update \
       && apt-get upgrade -y \
-      && apt-get install imagemagick
+      && apt-get install -y imagemagick
 
 RUN gem install bundler
 
