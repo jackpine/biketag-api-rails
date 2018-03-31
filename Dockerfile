@@ -6,7 +6,10 @@ ENV HOME /root
 
 CMD ["/sbin/my_init"]
 
-RUN apt-get install imagemagick
+RUN apt-get update \
+      && apt-get upgrade -y \
+      && apt-get install imagemagick
+
 RUN gem install bundler
 
 RUN rm /etc/service/nginx/down
