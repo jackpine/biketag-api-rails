@@ -1,18 +1,10 @@
-FROM phusion/passenger-ruby22:latest
+FROM phusion/passenger-ruby25:latest
+
 MAINTAINER Michael Kirk <michael@jackpine.me>
 
 ENV HOME /root
 
 CMD ["/sbin/my_init"]
-
-# Phusion hasn't updated their images lately.
-# Lifted this update oneliner from https://github.com/phusion/passenger-docker/issues/125
-RUN apt-get update \
-      && apt-get upgrade -y \
-      && apt-get install -y ruby2.3 ruby2.3-dev \
-      && ruby-switch --set ruby2.3 \
-      && apt-get clean \
-      && rm -rf /var/lib/apt/lists/*
 
 RUN gem install bundler
 
