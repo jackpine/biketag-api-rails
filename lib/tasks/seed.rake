@@ -1,6 +1,6 @@
 namespace :db do
   task seed: :environment do
-    require Rails.root + 'db/seeds.rb'
+    require File.join(Rails.root, 'db', 'seeds')
     Seeds.seed!
   end
 end
